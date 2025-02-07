@@ -12,9 +12,11 @@
 struct Student {
     std::string name;
     std::string surname;
-    std::vector<int> grades;
+    std::vector<double> grades;
+    int exam_grade;
 
 };
+
 
 
 #endif //STUDENT_H
