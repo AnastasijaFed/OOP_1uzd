@@ -25,7 +25,7 @@ vector<Student> addStudents(vector<Student> students) {
         cout<<"Pavardė: "<<endl;
         cin>>student.surname;
         int grades_number = 0;
-        cout<<"Kiek tarpinių pažymių norite įvesti?: "<<endl;
+        cout<<"Kiek tarpinių pažymių (už namų darbus) norite įvesti?: "<<endl;
         cin>>grades_number;
         cout<<"Pažymiai: "<<endl;
 
