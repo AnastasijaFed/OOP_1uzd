@@ -1,6 +1,8 @@
 
 
 #include "Student.h"
+
+#include <fstream>
 using namespace std;
 
 
@@ -112,6 +114,50 @@ void generateGrades(vector<Student>& students) {
     }
 }
 
+vector<string> loadFromFile(const string& filename) {
+    vector<string> list;
+    ifstream file(filename);
+    if (file.is_open()) {
+        string line;
+        while (getline(file, line)) {
+            list.push_back(line);
+        }
+        file.close();
+    }else {
+        cout<<"Neįmanoma atidaryti failo "<<filename<<endl;
+    }
+return list;
+}
+
+vector<Student> generateRandomStudents(int count, const std::string& first_names_file, const std::string& last_names_file) {
+    vector<string> first_names = loadFromFile(first_names_file);
+    vector<string> last_names = loadFromFile(last_names_file);
+    vector<Student> students;
+
+    if (first_names.empty() || last_names.empty()) {
+        cerr<<"Nepavyko sugeneruoti vardų.\n";
+        for (int i = 1; i <= count; ++i) {
+            Student student;
+            student.name = "Vardas" + to_string(i);
+            student.surname = "Pavarde" + to_string(i);
+            students.push_back(student);
+        }
+        return students;
+    }
+    else {
+        random_shuffle(first_names.begin(), first_names.end());
+        random_shuffle(last_names.begin(), last_names.end());
+        for (int i = 0; i < count; ++i) {
+            Student student;
+            student.name = first_names[i % first_names.size()];
+            student.surname = last_names[i % last_names.size()];
+            students.push_back(student);
+        }
+
+        return students;
+    }
+}
+
 int main() {
     vector<Student> students;
     int menu_choice;
@@ -139,7 +185,7 @@ int main() {
                 int count;
             cout << "Kiek studentų generuoti? ";
             cin >> count;
-            //students = generateStudents(count);
+            students = generateRandomStudents(count, std::string("first_names.txt"), std::string("surnames.txt"));
             generateGrades(students);
             break;
             case 4:
