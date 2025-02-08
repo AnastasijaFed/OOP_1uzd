@@ -10,8 +10,13 @@ vector<Student> addStudents(vector<Student> students) {
     char answer;
     cout <<"Ar norite pridėti naują studentą? (t/n)";
     cin >> answer;
+    while (std::tolower(answer) != 't' && std::tolower(answer) != 'n') {
+        cout<<"Toks atsakymas negalimas. Bandykite iš naujo.";
+        cout <<"Ar norite pridėti naują studentą? (t/n)";
+        cin >> answer;
+    }
 
-    while (answer == 't') {
+    while (std::tolower(answer) == 't') {
         Student student;
 
         cout<<"Vardas: "<<endl;
@@ -27,16 +32,30 @@ vector<Student> addStudents(vector<Student> students) {
         for (int i = 1; i <= grades_number; i++) {
 
             int grade;
-            cin>>grade;
+            while (!(cin >> grade) || grade < 0 || grade > 10) {
+                cout << "Neteisinga įvestis. Įveskite skaičių: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
             student.grades.push_back(grade);
         }
         cout<<"Egzamino pažymys: "<<endl;
-        cin>>student.exam_grade;
+        while (!(cin >> student.exam_grade) || student.exam_grade < 0 || student.exam_grade > 10) {
+            cout << "Neteisinga įvestis. Įveskite skaičių: ";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+
 
         students.push_back(student);
 
         cout <<"Ar norite pridėti naują studentą? (t/n)";
         cin >> answer;
+        while (std::tolower(answer) != 't' && std::tolower(answer) != 'n') {
+            cout<<"Toks atsakymas negalimas. Bandykite iš naujo.";
+            cout <<"Ar norite pridėti naują studentą? (t/n)";
+            cin >> answer;
+        }
         if (answer == 'n') {break;}
     }
     return students;
