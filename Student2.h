@@ -5,6 +5,11 @@
 #ifndef STUDENT2_H
 #define STUDENT2_H
 
+#include <iostream>
+#include <numeric>
+#include <iomanip>
+
+
 struct Student2 {
   char name[20];
   char surname[20];
