@@ -8,11 +8,14 @@
 #include <iostream>
 #include <numeric>
 #include <iomanip>
+#include <vector>
+#include <fstream>
+
 
 
 struct Student2 {
-  char name[20];
-  char surname[20];
+  std::string name;
+  std::string surname;
   int grades[50];
   int exam_grade;
   int num_grades;
