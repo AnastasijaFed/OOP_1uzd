@@ -2,9 +2,8 @@
 #include "Student2.h"
 using namespace std;
 
-Student2* addStudents(Student2* students) {
+vector<Student2> addStudents2(vector<Student2> students) {
     char answer;
-    int i = 0;
     cout <<"Ar norite pridėti naują studentą? (t/n)";
     cin >> answer;
     while (std::tolower(answer) != 't' && std::tolower(answer) != 'n') {
@@ -27,9 +26,7 @@ Student2* addStudents(Student2* students) {
         cout<<"Pažymiai: "<<endl;
 
         for (int i = 0; i < grades_number; i++) {
-
             int grade;
-
             while (!(cin >> grade) || grade < 0 || grade > 10) {
                 cout << "Neteisinga įvestis. Įveskite skaičių: ";
                 cin.clear();
@@ -44,9 +41,7 @@ Student2* addStudents(Student2* students) {
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
 
-
-
-        students[i] = student;
+        students.push_back(student);
 
         cout <<"Ar norite pridėti naują studentą? (t/n)";
         cin >> answer;
