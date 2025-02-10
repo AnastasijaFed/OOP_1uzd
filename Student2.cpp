@@ -1,6 +1,7 @@
 
 #include "Student2.h"
 using namespace std;
+vector<Student2> students;
 
 vector<Student2> addStudents2(vector<Student2> students) {
     char answer;
@@ -149,9 +150,10 @@ vector<string> loadFromFile(const string& filename) {
 return list;
 }
 
-void generateRandomStudents(vector<Student2> students,int count, const std::string& first_names_file, const std::string& last_names_file) {
+vector<Student2> generateRandomStudents(int count, const std::string& first_names_file, const std::string& last_names_file) {
     vector<string> first_names = loadFromFile(first_names_file);
     vector<string> last_names = loadFromFile(last_names_file);
+    vector<Student2> students;
 
     if (first_names.empty() || last_names.empty()) {
         cerr<<"Nepavyko sugeneruoti vardų.\n";
@@ -161,6 +163,7 @@ void generateRandomStudents(vector<Student2> students,int count, const std::stri
             student.surname = "Pavarde" + to_string(i);
             students.push_back(student);
         }
+        return students;
     }
     else {
         random_shuffle(first_names.begin(), first_names.end());
@@ -172,12 +175,12 @@ void generateRandomStudents(vector<Student2> students,int count, const std::stri
             students.push_back(student);
         }
 
-
+        return students;
     }
 }
 
 int main() {
-    vector<Student2> students;
+
     int menu_choice;
     do {
         cout << "\nPasirinkite programos eigą:\n";
@@ -203,7 +206,7 @@ int main() {
                 int count;
             cout << "Kiek studentų generuoti? ";
             cin >> count;
-           generateRandomStudents(students, count, std::string("first_names.txt"), std::string("surnames.txt"));
+            students = generateRandomStudents(count, std::string("first_names.txt"), std::string("surnames.txt"));
             generateGrades(students);
             break;
             case 4:
@@ -218,10 +221,6 @@ int main() {
         }
 
     } while (menu_choice != 4);
-
-
-
-
 
 
     return 0;
