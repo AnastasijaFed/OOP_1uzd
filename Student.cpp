@@ -28,7 +28,12 @@ int main() {
 
         switch (menu_choice) {
             case 1:
-                students = addStudents(students);
+                try {
+                    students = addStudents(students);
+                } catch (const std::bad_alloc& e) {
+                    cerr << "Nepakanka atminties. Programa baigiama.\n";
+                    return 1;
+                }
                 break;
             case 2:
                 if (students.empty()) {

@@ -154,6 +154,7 @@ vector<string> loadFromFile(const string &filename) {
 vector<Student> readStudentsFile(const string &filename) {
     vector<Student> students;
     ifstream file(filename);
+    try{
     if (!file.is_open()) {
         throw runtime_error("Nepavyko atidaryti failo.");
     } else {
@@ -177,6 +178,10 @@ vector<Student> readStudentsFile(const string &filename) {
         }
 
         file.close();
+    }
+    }
+    catch (const runtime_error &e) {
+        cerr << "Klaida skaitant failą: " << e.what() << endl;
     }
 
     return students;
@@ -233,6 +238,7 @@ vector<Student> test() {
     }
     vector<Student> students;
     ifstream file(filename);
+    try{
     if (!file.is_open()) {
         throw std::runtime_error("Nepavyko atidaryti failo: " + filename);
     }
@@ -269,6 +275,10 @@ vector<Student> test() {
     printStudentList(students);
 
     cout << "Duration (seconds): " << duration_s << endl;
+    }catch (const runtime_error& e) {
+        cerr << "Klaida skaitant failą: " << e.what() << endl;
+
+        }
     return students;
 }
 
