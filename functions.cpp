@@ -220,8 +220,6 @@ vector<Student> generateRandomStudents(int count, const std::string &first_names
 
 vector<Student> test() {
     std::string filename;
-    Student student;
-    istringstream iss;
     cout << "Kiek studentų norite pridėti? (10000/100000/1000000)" << endl;
     int n;
     cin >> n;
