@@ -46,10 +46,12 @@ vector<Student> addStudents(vector<Student> students) {
             cout << "Studentas neturi tarpinių pažymių." << endl;
         }
         cout << "Egzamino pažymys: " << endl;
-        while (!(cin >> student.exam_grade) || student.exam_grade < 0 || student.exam_grade > 10) {
+        cin>>student.exam_grade;
+        while (cin.fail() || student.exam_grade < 0 || student.exam_grade > 10) {
             cout << "Neteisinga įvestis. Įveskite skaičių: ";
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cin >> student.exam_grade;
         }
 
 
