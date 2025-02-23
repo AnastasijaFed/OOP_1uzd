@@ -73,10 +73,12 @@ int main() {
                 if (students.empty()) {
                     cout << "Sąraše nėra studentų";
                 } else {
-                    while (!(cin >> answ) || answ < 1 || answ > 4 || cin.peek() != '\n') {
+                    cin >> answ;
+                    while (cin.fail() || answ < 1 || answ > 4 ) {
                         cin.clear();
                         cin.ignore(numeric_limits<streamsize>::max(), '\n');
                         cout << "Toks atsakymas negalimas. Bandykite iš naujo.";
+                        cin >> answ;
                     }
                     if (answ == 1) {
                         students = sortByName(students);
