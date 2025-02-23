@@ -26,20 +26,27 @@ vector<Student> addStudents(vector<Student> students) {
 
         cout<<"Pavardė: "<<endl;
         cin>>student.surname;
-        int grades_number = 0;
-        cout<<"Kiek tarpinių pažymių (už namų darbus) norite įvesti?: "<<endl;
-        cin>>grades_number;
-        cout<<"Pažymiai: "<<endl;
+        int grades_number;
+        cout << "Kiek tarpinių pažymių (už namų darbus) norite įvesti?: " << endl;
+        while (!(cin >> grades_number) || grades_number < 0 || cin.peek() != '\n') {
+            cout << "Neteisinga įvestis. Įveskite teigiamą skaičių: ";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
 
-        for (int i = 1; i <= grades_number; i++) {
-
-            int grade;
-            while (!(cin >> grade) || grade < 0 || grade > 10) {
-                cout << "Neteisinga įvestis. Įveskite skaičių: ";
-                cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        if (grades_number > 0) {
+            cout << "Pažymiai: " << endl;
+            for (int i = 1; i <= grades_number; i++) {
+                int grade = 0;
+                while (!(cin >> grade) || grade < 0 || grade > 10 || cin.peek() != '\n') {
+                    cout << "Neteisinga įvestis. Įveskite skaičių nuo 0 iki 10: ";
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
+                student.grades.push_back(grade);
             }
-            student.grades.push_back(grade);
+        } else {
+            cout << "Studentas neturi tarpinių pažymių." << endl;
         }
         cout<<"Egzamino pažymys: "<<endl;
         while (!(cin >> student.exam_grade) || student.exam_grade < 0 || student.exam_grade > 10) {
@@ -81,11 +88,11 @@ double median(const Student& student) {
     if (student.grades.empty()) {
         return 0.0;
     }
-
     std::vector<double> sorted_grades = student.grades;
     std::sort(sorted_grades.begin(), sorted_grades.end());
 
     size_t middle = sorted_grades.size() / 2;
+    //cout <<"Median: " << sorted_grades[middle] <<endl;
 
     if (sorted_grades.size() % 2 == 0) {
         return (sorted_grades[middle - 1] + sorted_grades[middle]) / 2.0;
@@ -150,34 +157,6 @@ vector<string> loadFromFile(const string& filename) {
 return list;
 }
 
-vector<Student> generateRandomStudents(int count, const std::string& first_names_file, const std::string& last_names_file) {
-    vector<string> first_names = loadFromFile(first_names_file);
-    vector<string> last_names = loadFromFile(last_names_file);
-    vector<Student> students;
-
-    if (first_names.empty() || last_names.empty()) {
-        cerr<<"Nepavyko sugeneruoti vardų.\n";
-        for (int i = 1; i <= count; ++i) {
-            Student student;
-            student.name = "Vardas" + to_string(i);
-            student.surname = "Pavarde" + to_string(i);
-            students.push_back(student);
-        }
-        return students;
-    }
-    else {
-        random_shuffle(first_names.begin(), first_names.end());
-        random_shuffle(last_names.begin(), last_names.end());
-        for (int i = 0; i < count; ++i) {
-            Student student;
-            student.name = first_names[i % first_names.size()];
-            student.surname = last_names[i % last_names.size()];
-            students.push_back(student);
-        }
-
-        return students;
-    }
-}
 vector<Student> readStudentsFile(const string& filename) {
     vector<Student> students;
     ifstream file(filename);
@@ -209,39 +188,38 @@ vector<Student> readStudentsFile(const string& filename) {
     }
 
     return students;
-}
+    }
 
 
-bool compareByName(const Student a, const Student b) {
-    return a.name < b.name;
+vector<Student> generateRandomStudents(int count, const std::string& first_names_file, const std::string& last_names_file) {
+    vector<string> first_names = loadFromFile(first_names_file);
+    vector<string> last_names = loadFromFile(last_names_file);
+    vector<Student> students;
+
+    if (first_names.empty() || last_names.empty()) {
+        cerr<<"Nepavyko sugeneruoti vardų.\n";
+        for (int i = 1; i <= count; ++i) {
+            Student student;
+            student.name = "Vardas" + to_string(i);
+            student.surname = "Pavarde" + to_string(i);
+            students.push_back(student);
+        }
+        return students;
+    }
+    else {
+        random_shuffle(first_names.begin(), first_names.end());
+        random_shuffle(last_names.begin(), last_names.end());
+        for (int i = 0; i < count; ++i) {
+            Student student;
+            student.name = first_names[i % first_names.size()];
+            student.surname = last_names[i % last_names.size()];
+            students.push_back(student);
+        }
+
+        return students;
+    }
 }
-bool compareBySurname(const Student a, const Student b) {
-    return a.surname < b.surname;
-}
-bool compareByAverage(const Student a, const Student b) {
-    return calculateFinalGradesAverage(a) < calculateFinalGradesAverage(b);
-}
-bool compareByMedian(const Student a, const Student b) {
-    return calculateFinalGradesMedian(a) < calculateFinalGradesMedian(b);
-}
-vector<Student> sortByName(vector<Student> students) {
-    sort(students.begin(), students.end(), compareByName);
-    printStudentList(students);
-    return students;
-}
-vector<Student> sortBySurname(vector<Student> students) {
-    sort(students.begin(), students.end(), compareBySurname);
-    printStudentList(students);
-    return students;
-}
-vector<Student> sortByAverage(vector<Student> students) {
-    sort(students.begin(), students.end(), compareByAverage);
-    return students;
-}
-vector<Student> sortByMedian(vector<Student> students) {
-    sort(students.begin(), students.end(), compareByMedian);
-    return students;
-}
+
 vector<Student> test() {
     std::string filename;
     Student student;
@@ -298,7 +276,38 @@ vector<Student> test() {
     double duration_s = duration_ms.count() / 1000.0;
     printStudentList(students);
 
-    cout << "Duration (seconds): " << duration_s << endl;
+        cout << "Duration (seconds): " << duration_s << endl;
+    return students;
+}
+
+bool compareByName(const Student a, const Student b) {
+    return a.name < b.name;
+}
+bool compareBySurname(const Student a, const Student b) {
+    return a.surname < b.surname;
+}
+bool compareByAverage(const Student a, const Student b) {
+    return calculateFinalGradesAverage(a) < calculateFinalGradesAverage(b);
+}
+bool compareByMedian(const Student a, const Student b) {
+    return calculateFinalGradesMedian(a) < calculateFinalGradesMedian(b);
+}
+vector<Student> sortByName(vector<Student> students) {
+    sort(students.begin(), students.end(), compareByName);
+    printStudentList(students);
+    return students;
+}
+vector<Student> sortBySurname(vector<Student> students) {
+    sort(students.begin(), students.end(), compareBySurname);
+    printStudentList(students);
+    return students;
+}
+vector<Student> sortByAverage(vector<Student> students) {
+    sort(students.begin(), students.end(), compareByAverage);
+    return students;
+}
+vector<Student> sortByMedian(vector<Student> students) {
+    sort(students.begin(), students.end(), compareByMedian);
     return students;
 }
 int main() {
