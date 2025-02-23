@@ -176,6 +176,18 @@ vector<Student> generateRandomStudents(int count, const std::string& first_names
         return students;
     }
 }
+bool compareByName(const Student a, const Student b) {
+    return a.name < b.name;
+}
+bool compareBySurname(const Student a, const Student b) {
+    return a.surname < b.surname;
+}
+bool compareByAverage(const Student a, const Student b) {
+    return calculateFinalGradesAverage(a) < calculateFinalGradesAverage(b);
+}
+bool compareByMedian(const Student a, const Student b) {
+    return calculateFinalGradesMedian(a) < calculateFinalGradesMedian(b);
+}
 
 int main() {
     vector<Student> students;
