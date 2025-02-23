@@ -84,7 +84,6 @@ double median(const Student &student) {
     std::sort(sorted_grades.begin(), sorted_grades.end());
 
     size_t middle = sorted_grades.size() / 2;
-    //cout <<"Median: " << sorted_grades[middle] <<endl;
 
     if (sorted_grades.size() % 2 == 0) {
         return (sorted_grades[middle - 1] + sorted_grades[middle]) / 2.0;
