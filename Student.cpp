@@ -188,7 +188,24 @@ bool compareByAverage(const Student a, const Student b) {
 bool compareByMedian(const Student a, const Student b) {
     return calculateFinalGradesMedian(a) < calculateFinalGradesMedian(b);
 }
-
+vector<Student> sortByName(vector<Student> students) {
+    sort(students.begin(), students.end(), compareByName);
+    printStudentList(students);
+    return students;
+}
+vector<Student> sortBySurname(vector<Student> students) {
+    sort(students.begin(), students.end(), compareBySurname);
+    printStudentList(students);
+    return students;
+}
+vector<Student> sortByAverage(vector<Student> students) {
+    sort(students.begin(), students.end(), compareByAverage);
+    return students;
+}
+vector<Student> sortByMedian(vector<Student> students) {
+    sort(students.begin(), students.end(), compareByMedian);
+    return students;
+}
 int main() {
     vector<Student> students;
     int menu_choice;
