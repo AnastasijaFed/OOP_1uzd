@@ -19,11 +19,12 @@ int main() {
         cout << "6 - Testas\n";
         cout << "7 - Baigti darbą\n";
         cout << "Jūsų pasirinkimas: ";
-
-        while (!(cin >> menu_choice) || menu_choice < 1 || menu_choice > 7 || cin.peek() != '\n') {
+        cin >> menu_choice;
+        while (cin.fail() || menu_choice < 1 || menu_choice > 7 ) {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout << "Neteisingas pasirinkimas. Bandykite dar kartą.\n";
+            cin >> menu_choice;
         }
 
         switch (menu_choice) {
