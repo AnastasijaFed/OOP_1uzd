@@ -21,10 +21,12 @@ vector<Student> addStudents(vector<Student> students) {
         cin >> student.surname;
         int grades_number;
         cout << "Kiek tarpinių pažymių (už namų darbus) norite įvesti?: " << endl;
-        while (!(cin >> grades_number) || grades_number < 0 || cin.peek() != '\n') {
+        cin >> grades_number;
+        while (cin.fail() || grades_number < 0) {
             cout << "Neteisinga įvestis. Įveskite teigiamą skaičių: ";
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cin >> grades_number;
         }
 
         if (grades_number > 0) {
