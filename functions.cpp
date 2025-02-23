@@ -31,10 +31,12 @@ vector<Student> addStudents(vector<Student> students) {
             cout << "Pažymiai: " << endl;
             for (int i = 1; i <= grades_number; i++) {
                 int grade = 0;
-                while (!(cin >> grade) || grade < 0 || grade > 10 || cin.peek() != '\n') {
+                cin >> grade;
+                while (cin.fail() || grade < 0 || grade > 10) {
                     cout << "Neteisinga įvestis. Įveskite skaičių nuo 0 iki 10: ";
                     cin.clear();
                     cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    cin >> grade;
                 }
                 student.grades.push_back(grade);
             }
