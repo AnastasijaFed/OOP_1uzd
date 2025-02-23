@@ -106,7 +106,7 @@ double calculateFinalGradesAverage(const Student2& student) {
     return average_grade * 0.4 + student.exam_grade * 0.6;;
 }
 
-void printStudentList(const std::vector<Student2>& students) {
+/*void printStudentList(const std::vector<Student2>& students) {
     cout << left << setw(15) << "Pavardė" << setw(10) << "Vardas"
           << setw(15) << "Galutinis (Vid.)" << setw(15) << "Galutinis (Med.)" << endl;
     cout << setfill('-') << setw(55) << "-" << setfill(' ') << endl; // Increased width
@@ -119,7 +119,7 @@ void printStudentList(const std::vector<Student2>& students) {
         cout << fixed << setprecision(2) << right << setw(15) << avgFinal
              << fixed << setprecision(2) << right << setw(15) << medFinal << endl;
     }
-}
+}*/
 void generateGrades(vector<Student2>& students) {
     static bool seeded = false;
     if (!seeded) {

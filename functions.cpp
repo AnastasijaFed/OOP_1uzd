@@ -1,6 +1,4 @@
-//
-// Created by Anastasija Fedorenko on 2025-02-23.
-//
+
 
 #include "functions.h"
 vector<Student> addStudents(vector<Student> students) {
@@ -105,7 +103,7 @@ double calculateFinalGradesAverage(const Student &student) {
     return average_grade * 0.4 + student.exam_grade * 0.6;;
 }
 
-void printStudentList(const vector<Student> &students) {
+void printStudentList(vector<Student> &students) {
     cout << left << setw(15) << "Pavardė" << setw(10) << "Vardas"
             << setw(15) << "Galutinis (Vid.)" << setw(15) << "Galutinis (Med.)" << endl;
     cout << setfill('-') << setw(55) << "-" << setfill(' ') << endl; // Increased width
