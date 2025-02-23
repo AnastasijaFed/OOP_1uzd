@@ -1,5 +1,3 @@
-
-
 #include "Student.h"
 
 #include <fstream>
@@ -10,22 +8,22 @@ using namespace std::chrono;
 
 vector<Student> addStudents(vector<Student> students) {
     char answer;
-    cout <<"Ar norite pridėti naują studentą? (t/n)";
+    cout << "Ar norite pridėti naują studentą? (t/n)";
     cin >> answer;
     while (std::tolower(answer) != 't' && std::tolower(answer) != 'n') {
-        cout<<"Toks atsakymas negalimas. Bandykite iš naujo.";
-        cout <<"Ar norite pridėti naują studentą? (t/n)";
+        cout << "Toks atsakymas negalimas. Bandykite iš naujo.";
+        cout << "Ar norite pridėti naują studentą? (t/n)";
         cin >> answer;
     }
 
     while (std::tolower(answer) == 't') {
         Student student;
 
-        cout<<"Vardas: "<<endl;
+        cout << "Vardas: " << endl;
         cin >> student.name;
 
-        cout<<"Pavardė: "<<endl;
-        cin>>student.surname;
+        cout << "Pavardė: " << endl;
+        cin >> student.surname;
         int grades_number;
         cout << "Kiek tarpinių pažymių (už namų darbus) norite įvesti?: " << endl;
         while (!(cin >> grades_number) || grades_number < 0 || cin.peek() != '\n') {
@@ -48,7 +46,7 @@ vector<Student> addStudents(vector<Student> students) {
         } else {
             cout << "Studentas neturi tarpinių pažymių." << endl;
         }
-        cout<<"Egzamino pažymys: "<<endl;
+        cout << "Egzamino pažymys: " << endl;
         while (!(cin >> student.exam_grade) || student.exam_grade < 0 || student.exam_grade > 10) {
             cout << "Neteisinga įvestis. Įveskite skaičių: ";
             cin.clear();
@@ -58,21 +56,20 @@ vector<Student> addStudents(vector<Student> students) {
 
         students.push_back(student);
 
-        cout <<"Ar norite pridėti naują studentą? (t/n)";
+        cout << "Ar norite pridėti naują studentą? (t/n)";
         cin >> answer;
         while (std::tolower(answer) != 't' && std::tolower(answer) != 'n') {
-            cout<<"Toks atsakymas negalimas. Bandykite iš naujo.";
-            cout <<"Ar norite pridėti naują studentą? (t/n)";
+            cout << "Toks atsakymas negalimas. Bandykite iš naujo.";
+            cout << "Ar norite pridėti naują studentą? (t/n)";
             cin >> answer;
         }
-        if (answer == 'n') {break;}
+        if (answer == 'n') { break; }
     }
     return students;
 }
 
 
-
-double average(const Student& student) {
+double average(const Student &student) {
     if (student.grades.empty()) {
         return 0.0;
     }
@@ -84,7 +81,7 @@ double average(const Student& student) {
     return average_grades;
 }
 
-double median(const Student& student) {
+double median(const Student &student) {
     if (student.grades.empty()) {
         return 0.0;
     }
@@ -101,18 +98,19 @@ double median(const Student& student) {
     }
 }
 
-double calculateFinalGradesMedian(const Student& student) {
+double calculateFinalGradesMedian(const Student &student) {
     double median_grade = median(student);
     return median_grade * 0.4 + student.exam_grade * 0.6;
 }
-double calculateFinalGradesAverage(const Student& student) {
+
+double calculateFinalGradesAverage(const Student &student) {
     double average_grade = average(student);
     return average_grade * 0.4 + student.exam_grade * 0.6;;
 }
 
-void printStudentList(const vector<Student>& students) {
+void printStudentList(const vector<Student> &students) {
     cout << left << setw(15) << "Pavardė" << setw(10) << "Vardas"
-          << setw(15) << "Galutinis (Vid.)" << setw(15) << "Galutinis (Med.)" << endl;
+            << setw(15) << "Galutinis (Vid.)" << setw(15) << "Galutinis (Med.)" << endl;
     cout << setfill('-') << setw(55) << "-" << setfill(' ') << endl; // Increased width
 
     for (size_t i = 0; i < students.size(); ++i) {
@@ -122,17 +120,18 @@ void printStudentList(const vector<Student>& students) {
         double medFinal = calculateFinalGradesMedian(students[i]);
 
         cout << fixed << setprecision(2) << right << setw(15) << avgFinal
-             << fixed << setprecision(2) << right << setw(15) << medFinal << endl;
+                << fixed << setprecision(2) << right << setw(15) << medFinal << endl;
     }
 }
-void generateGrades(vector<Student>& students) {
+
+void generateGrades(vector<Student> &students) {
     static bool seeded = false;
     if (!seeded) {
         srand(time(0));
         seeded = true;
     }
 
-    for (auto& student : students) {
+    for (auto &student: students) {
         int grades_number = rand() % 15 + 1;
         student.grades.clear();
         for (int i = 0; i < grades_number; ++i) {
@@ -142,7 +141,7 @@ void generateGrades(vector<Student>& students) {
     }
 }
 
-vector<string> loadFromFile(const string& filename) {
+vector<string> loadFromFile(const string &filename) {
     vector<string> list;
     ifstream file(filename);
     if (file.is_open()) {
@@ -151,19 +150,18 @@ vector<string> loadFromFile(const string& filename) {
             list.push_back(line);
         }
         file.close();
-    }else {
-        cout<<"Neįmanoma atidaryti failo "<<filename<<endl;
+    } else {
+        cout << "Neįmanoma atidaryti failo " << filename << endl;
     }
-return list;
+    return list;
 }
 
-vector<Student> readStudentsFile(const string& filename) {
+vector<Student> readStudentsFile(const string &filename) {
     vector<Student> students;
     ifstream file(filename);
     if (!file.is_open()) {
         throw runtime_error("Nepavyko atidaryti failo.");
-    }
-    else {
+    } else {
         string header, line;
         getline(file, header);
 
@@ -184,20 +182,20 @@ vector<Student> readStudentsFile(const string& filename) {
         }
 
         file.close();
-
     }
 
     return students;
-    }
+}
 
 
-vector<Student> generateRandomStudents(int count, const std::string& first_names_file, const std::string& last_names_file) {
+vector<Student> generateRandomStudents(int count, const std::string &first_names_file,
+                                       const std::string &last_names_file) {
     vector<string> first_names = loadFromFile(first_names_file);
     vector<string> last_names = loadFromFile(last_names_file);
     vector<Student> students;
 
     if (first_names.empty() || last_names.empty()) {
-        cerr<<"Nepavyko sugeneruoti vardų.\n";
+        cerr << "Nepavyko sugeneruoti vardų.\n";
         for (int i = 1; i <= count; ++i) {
             Student student;
             student.name = "Vardas" + to_string(i);
@@ -205,8 +203,7 @@ vector<Student> generateRandomStudents(int count, const std::string& first_names
             students.push_back(student);
         }
         return students;
-    }
-    else {
+    } else {
         random_shuffle(first_names.begin(), first_names.end());
         random_shuffle(last_names.begin(), last_names.end());
         for (int i = 0; i < count; ++i) {
@@ -224,19 +221,19 @@ vector<Student> test() {
     std::string filename;
     Student student;
     istringstream iss;
-    cout << "Kiek studentų norite pridėti? (10000/100000/1000000)"<<endl;
+    cout << "Kiek studentų norite pridėti? (10000/100000/1000000)" << endl;
     int n;
-    cin>>n;
+    cin >> n;
     while (n != 10000 && n != 100000 && n != 1000000) {
-        cout<<"Neteisinga įvestis, bandykite dar kartą"<< endl;
-        cin>>n;
+        cout << "Neteisinga įvestis, bandykite dar kartą" << endl;
+        cin >> n;
     }
     auto start = high_resolution_clock::now();
     if (n == 10000) {
         filename.assign("studentai10000.txt");
     } else if (n == 100000) {
         filename.assign("studentai100000.txt");
-    }else if (n == 1000000) {
+    } else if (n == 1000000) {
         filename.assign("studentai1000000.txt");
     }
     vector<Student> students;
@@ -276,40 +273,48 @@ vector<Student> test() {
     double duration_s = duration_ms.count() / 1000.0;
     printStudentList(students);
 
-        cout << "Duration (seconds): " << duration_s << endl;
+    cout << "Duration (seconds): " << duration_s << endl;
     return students;
 }
 
 bool compareByName(const Student a, const Student b) {
     return a.name < b.name;
 }
+
 bool compareBySurname(const Student a, const Student b) {
     return a.surname < b.surname;
 }
+
 bool compareByAverage(const Student a, const Student b) {
     return calculateFinalGradesAverage(a) < calculateFinalGradesAverage(b);
 }
+
 bool compareByMedian(const Student a, const Student b) {
     return calculateFinalGradesMedian(a) < calculateFinalGradesMedian(b);
 }
+
 vector<Student> sortByName(vector<Student> students) {
     sort(students.begin(), students.end(), compareByName);
     printStudentList(students);
     return students;
 }
+
 vector<Student> sortBySurname(vector<Student> students) {
     sort(students.begin(), students.end(), compareBySurname);
     printStudentList(students);
     return students;
 }
+
 vector<Student> sortByAverage(vector<Student> students) {
     sort(students.begin(), students.end(), compareByAverage);
     return students;
 }
+
 vector<Student> sortByMedian(vector<Student> students) {
     sort(students.begin(), students.end(), compareByMedian);
     return students;
 }
+
 int main() {
     vector<Student> students;
     vector<Student> students2;
@@ -326,89 +331,83 @@ int main() {
         cout << "7 - Baigti darbą\n";
         cout << "Jūsų pasirinkimas: ";
 
-        while (!(cin >> menu_choice) || menu_choice < 1 || menu_choice > 7 ||cin.peek() != '\n' ) {
+        while (!(cin >> menu_choice) || menu_choice < 1 || menu_choice > 7 || cin.peek() != '\n') {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout << "Neteisingas pasirinkimas. Bandykite dar kartą.\n";
-
         }
 
         switch (menu_choice) {
             case 1:
                 students = addStudents(students);
-            break;
+                break;
             case 2:
                 if (students.empty()) {
                     cout << "Pirmiausia sugeneruokite studentus arba įveskite ranka.\n";
                 } else {
                     generateGrades(students);
                 }
-            break;
+                break;
             case 3:
                 int count;
-            cout << "Kiek studentų generuoti? ";
-            while (!(cin >> count) || count < 0 || cin.peek() != '\n') {
-                cout << "Neteisinga įvestis. Įveskite teigiamą skaičių: ";
-                cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            }
-            students2= generateRandomStudents(count, std::string("first_names.txt"), std::string("surnames.txt"));
-            generateGrades(students2);
-            for (auto& student : students2) {
-                students.push_back(student);
-            }
-            break;
+                cout << "Kiek studentų generuoti? ";
+                while (!(cin >> count) || count < 0 || cin.peek() != '\n') {
+                    cout << "Neteisinga įvestis. Įveskite teigiamą skaičių: ";
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
+                students2 = generateRandomStudents(count, std::string("first_names.txt"), std::string("surnames.txt"));
+                generateGrades(students2);
+                for (auto &student: students2) {
+                    students.push_back(student);
+                }
+                break;
             case 4:
-                students2 =readStudentsFile(std::string("kursiokai.txt"));
-            for (auto& student : students2) {
-                students.push_back(student);
-            }
+                students2 = readStudentsFile(std::string("kursiokai.txt"));
+                for (auto &student: students2) {
+                    students.push_back(student);
+                }
 
                 break;
             case 5:
                 int answ;
-                cout<< "\n Pasirinkite rūšiavimo būdą: \n";
-                cout<< "1-Pagal vardą: \n";
-                cout<< "2-Pagal pavardę: \n";
-                cout<< "3-Pagal galutinį vidurkį: \n";
-                cout<< "4-Pagal medianą: \n";
-               if (students.empty()) {
-                   cout<< "Sąraše nėra studentų";
-               }else {
-
-                   while (!(cin >> answ) || answ < 1 || answ > 4 ||cin.peek() != '\n') {
-                       cin.clear();
-                       cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                       cout<< "Toks atsakymas negalimas. Bandykite iš naujo.";
-
-                   }
-                   if (answ == 1) {
-                       students = sortByName(students);
-                       printStudentList(students);
-                   }
-                   else if (answ == 2) {
-                       students = sortBySurname(students);
-                       printStudentList(students);
-                   }
-                   else if (answ == 3) {
-                       students = sortByAverage(students);
-                       printStudentList(students);
-                   }
-                   else if (answ == 4) {
-                       students = sortByMedian(students);
-                       printStudentList(students);
-                   }
-               }
+                cout << "\n Pasirinkite rūšiavimo būdą: \n";
+                cout << "1-Pagal vardą: \n";
+                cout << "2-Pagal pavardę: \n";
+                cout << "3-Pagal galutinį vidurkį: \n";
+                cout << "4-Pagal medianą: \n";
+                if (students.empty()) {
+                    cout << "Sąraše nėra studentų";
+                } else {
+                    while (!(cin >> answ) || answ < 1 || answ > 4 || cin.peek() != '\n') {
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        cout << "Toks atsakymas negalimas. Bandykite iš naujo.";
+                    }
+                    if (answ == 1) {
+                        students = sortByName(students);
+                        printStudentList(students);
+                    } else if (answ == 2) {
+                        students = sortBySurname(students);
+                        printStudentList(students);
+                    } else if (answ == 3) {
+                        students = sortByAverage(students);
+                        printStudentList(students);
+                    } else if (answ == 4) {
+                        students = sortByMedian(students);
+                        printStudentList(students);
+                    }
+                }
                 break;
             case 6:
                 students2 = test();
-            for (auto& student : students2) {
-                students.push_back(student);
-            }
+                for (auto &student: students2) {
+                    students.push_back(student);
+                }
 
             case 7:
                 cout << "Programa baigė darbą.\n";
-            break;
+                break;
             default:
                 cout << "Neteisingas pasirinkimas. Bandykite dar kartą.\n";
                 cin >> menu_choice;
@@ -417,12 +416,7 @@ int main() {
         if (menu_choice >= 1 && menu_choice <= 4) {
             printStudentList(students);
         }
-
-    } while (menu_choice != 7  );
-
-
-
-
+    } while (menu_choice != 7);
 
 
     return 0;
