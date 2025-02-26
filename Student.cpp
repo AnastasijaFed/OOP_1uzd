@@ -21,7 +21,7 @@ int main() {
         cout << "8 - Baigti darbą\n";
         cout << "Jūsų pasirinkimas: ";
         cin >> menu_choice;
-        while (cin.fail() || menu_choice < 1 || menu_choice > 7 ) {
+        while (cin.fail() || menu_choice < 1 || menu_choice > 8 ) {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout << "Neteisingas pasirinkimas. Bandykite dar kartą.\n";
@@ -52,7 +52,7 @@ int main() {
                     cin.clear();
                     cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 }
-                students2 = generateRandomStudents(count, std::string("first_names.txt"), std::string("surnames.txt"));
+                students2 = generateRandomStudents(count);
                 generateGrades(students2);
                 for (auto &student: students2) {
                     students.push_back(student);

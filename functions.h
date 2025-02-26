@@ -20,7 +20,7 @@ void printStudentList(vector<Student> &students);
 void generateGrades(vector<Student> &students);
 vector<string> loadFromFile(const string &fileName);
 vector<Student> readStudentsFile(const string &fileName);
-vector<Student> generateRandomStudents(int count, const std::string &first_names_file, const std::string &last_names_file);
+vector<Student> generateRandomStudents(int count);
 vector<Student> test();
 bool compareByName(const Student a, const Student b);
 bool compareBySurname(const Student a, const Student b);

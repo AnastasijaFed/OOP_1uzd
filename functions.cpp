@@ -128,12 +128,12 @@ void generateGrades(vector<Student> &students) {
     }
 
     for (auto &student: students) {
-        int grades_number = rand() % 15 + 1;
+        int grades_number = 5;
         student.grades.clear();
         for (int i = 0; i < grades_number; ++i) {
-            student.grades.push_back(rand() % 11);
+            student.grades.push_back(rand() % 10 + 1);
         }
-        student.exam_grade = rand() % 11;
+        student.exam_grade = rand() % 10 + 1;
     }
 }
 
@@ -189,10 +189,9 @@ vector<Student> readStudentsFile(const string &filename) {
 }
 
 
-vector<Student> generateRandomStudents(int count, const std::string &first_names_file,
-                                       const std::string &last_names_file) {
-    vector<string> first_names = loadFromFile(first_names_file);
-    vector<string> last_names = loadFromFile(last_names_file);
+vector<Student> generateRandomStudents(int count) {
+    vector<string> first_names = loadFromFile("first_names.txt");
+    vector<string> last_names = loadFromFile("surnames.txt");
     vector<Student> students;
 
     if (first_names.empty() || last_names.empty()) {
@@ -323,5 +322,24 @@ void createFile(int numberOfStudents){
   string number = to_string(numberOfStudents);
   string filename = "students" + number + ".txt";
   file.open(filename);
+  if (!file.is_open()) {
+    cerr << "Nepavyko sukurti failo: " + filename;
+    return;
+  }
+  else{
+     vector <Student> students = generateRandomStudents(numberOfStudents);
+     generateGrades(students);
+     for (const Student &student : students) {
+       file << student.name << " " << student.surname << " ";;
+       for(const double &grade : student.grades) {
+         file << grade  << " ";
+       }
+       file<< student.exam_grade << endl;
+     }
+
+  }
+
+
+
   file.close();
   }
