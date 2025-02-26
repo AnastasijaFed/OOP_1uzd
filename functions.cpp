@@ -339,7 +339,5 @@ void createFile(int numberOfStudents){
 
   }
 
-
-
   file.close();
   }

@@ -16,7 +16,7 @@ int main() {
         cout << "3 - Generuoti studentų vardus, pavardes ir pažymius\n";
         cout << "4 - Nuskaityti iš failo\n";
         cout << "5 - Rūšiuoti\n";
-        cout << "6 - Sukurti failą\n";
+        cout << "6 - Sukurti failus\n";
         cout << "7 - Testas\n";
         cout << "8 - Baigti darbą\n";
         cout << "Jūsų pasirinkimas: ";
@@ -101,7 +101,12 @@ int main() {
                 }
                 break;
             case 6:
-                createFile(10);
+
+                createFile(1000);
+                createFile(10000);
+                createFile(100000);
+                createFile(1000000);
+                createFile(10000000);
                 break;
             case 7:
                 students2 = test();
