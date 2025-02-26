@@ -107,6 +107,7 @@ int main() {
                 createFile(100000);
                 createFile(1000000);
                 createFile(10000000);
+                cout<< "Failai sukurti sėkmingai"<<endl;
                 break;
             case 7:
                 students2 = test();

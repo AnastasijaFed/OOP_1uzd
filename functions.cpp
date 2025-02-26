@@ -195,11 +195,10 @@ vector<Student> generateRandomStudents(int count) {
     vector<Student> students;
 
     if (first_names.empty() || last_names.empty()) {
-        cerr << "Nepavyko sugeneruoti vardų.\n";
         for (int i = 1; i <= count; ++i) {
             Student student;
-            student.name = "Vardas" + to_string(i);
-            student.surname = "Pavarde" + to_string(i);
+            student.name = "Vardas" + to_string(rand() % count + 1);
+            student.surname = "Pavarde" + to_string(rand() % count + 1);
             students.push_back(student);
         }
         return students;
@@ -330,7 +329,7 @@ void createFile(int numberOfStudents){
      vector <Student> students = generateRandomStudents(numberOfStudents);
      generateGrades(students);
      for (const Student &student : students) {
-       file << student.name << " " << student.surname << " ";;
+       file << student.name << " " << student.surname << "       ";;
        for(const double &grade : student.grades) {
          file << grade  << " ";
        }
