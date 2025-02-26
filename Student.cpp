@@ -16,8 +16,9 @@ int main() {
         cout << "3 - Generuoti studentų vardus, pavardes ir pažymius\n";
         cout << "4 - Nuskaityti iš failo\n";
         cout << "5 - Rūšiuoti\n";
-        cout << "6 - Testas\n";
-        cout << "7 - Baigti darbą\n";
+        cout << "6 - Sukurti failą\n";
+        cout << "7 - Testas\n";
+        cout << "8 - Baigti darbą\n";
         cout << "Jūsų pasirinkimas: ";
         cin >> menu_choice;
         while (cin.fail() || menu_choice < 1 || menu_choice > 7 ) {
@@ -62,6 +63,9 @@ int main() {
                 for (auto &student: students2) {
                     students.push_back(student);
                 }
+            if (!students2.empty()) {
+                printStudentList(students);
+            }
 
                 break;
             case 5:
@@ -97,12 +101,15 @@ int main() {
                 }
                 break;
             case 6:
+                createFile(10);
+                break;
+            case 7:
                 students2 = test();
                 for (auto &student: students2) {
                     students.push_back(student);
                 }
 
-            case 7:
+            case 8:
                 cout << "Programa baigė darbą.\n";
                 break;
             default:
@@ -110,10 +117,10 @@ int main() {
                 cin >> menu_choice;
         }
 
-        if (menu_choice >= 1 && menu_choice <= 4) {
+        if (menu_choice >= 1 && menu_choice <= 3) {
             printStudentList(students);
         }
-    } while (menu_choice != 7);
+    } while (menu_choice != 8);
 
 
     return 0;

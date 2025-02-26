@@ -30,6 +30,7 @@ vector<Student> sortByName(vector<Student> students);
 vector<Student> sortBySurname(vector<Student> students);
 vector<Student> sortByAverage(vector<Student> students);
 vector<Student> sortByMedian(vector<Student> students);
+void createFile(int numberOfStudents);
 
 
 

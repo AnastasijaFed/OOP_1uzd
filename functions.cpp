@@ -74,12 +74,8 @@ double average(const Student &student) {
     if (student.grades.empty()) {
         return 0.0;
     }
-    double sum = 0.0;
-    for (size_t i = 0; i < student.grades.size(); ++i) {
-        sum += student.grades[i];
-    }
-    double average_grades = sum / student.grades.size();
-    return average_grades;
+    double average = accumulate(student.grades.begin(), student.grades.end(), 0.0) / student.grades.size();
+    return average;
 }
 
 double median(const Student &student) {
@@ -322,3 +318,10 @@ vector<Student> sortByMedian(vector<Student> students) {
     sort(students.begin(), students.end(), compareByMedian);
     return students;
 }
+void createFile(int numberOfStudents){
+  ofstream file;
+  string number = to_string(numberOfStudents);
+  string filename = "students" + number + ".txt";
+  file.open(filename);
+  file.close();
+  }
