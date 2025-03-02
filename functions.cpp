@@ -318,6 +318,7 @@ void generateStudentsFile(int numberOfStudents){
   ofstream file;
   vector <Student> students;
   string number = to_string(numberOfStudents);
+  auto start = high_resolution_clock::now();
   string filename = "students" + number + ".txt";
   file.open(filename);
   if (!file.is_open()) {
@@ -337,6 +338,10 @@ void generateStudentsFile(int numberOfStudents){
 
   }
   file.close();
+   auto stop = std::chrono::high_resolution_clock::now();
+    auto duration_ms = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+    double duration_s = duration_ms.count() / 1000.0;
+    cout<< filename + " generavimo likas " << duration_s << "sek" << endl;
 
   }
 
