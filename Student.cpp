@@ -21,7 +21,7 @@ int main() {
         cout << "8 - Baigti darbą\n";
         cout << "Jūsų pasirinkimas: ";
         cin >> menu_choice;
-        while (cin.fail() || menu_choice < 1 || menu_choice > 8 ) {
+        while (cin.fail() || menu_choice < 1 || menu_choice > 8) {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout << "Neteisingas pasirinkimas. Bandykite dar kartą.\n";
@@ -29,103 +29,139 @@ int main() {
         }
 
         switch (menu_choice) {
-            case 1:
-                try {
-                    students = addStudents(students);
-                } catch (const std::bad_alloc& e) {
-                    cerr << "Nepakanka atminties. Programa baigiama.\n";
-                    return 1;
-                }
-                break;
-            case 2:
-                if (students.empty()) {
-                    cout << "Pirmiausia sugeneruokite studentus arba įveskite ranka.\n";
-                } else {
-                    generateGrades(students);
-                }
-                break;
-            case 3:
-                int count;
-                cout << "Kiek studentų generuoti? ";
-                while (!(cin >> count) || count < 0 || cin.peek() != '\n') {
-                    cout << "Neteisinga įvestis. Įveskite teigiamą skaičių: ";
-                    cin.clear();
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                }
-                students2 = generateRandomStudents(count);
-                generateGrades(students2);
-                for (auto &student: students2) {
-                    students.push_back(student);
-                }
-                break;
-            case 4:
-                students2 = readStudentsFile(std::string("kursiokai.txt"));
-                for (auto &student: students2) {
-                    students.push_back(student);
-                }
+        case 1:
+        {
+            try {
+                students = addStudents(students);
+            }
+            catch (const std::bad_alloc& e) {
+                cerr << "Nepakanka atminties. Programa baigiama.\n";
+                return 1;
+            }
+            break;
+        case 2:
+            if (students.empty()) {
+                cout << "Pirmiausia sugeneruokite studentus arba įveskite ranka.\n";
+            }
+            else {
+                generateGrades(students);
+            }
+            break;
+        }
+        case 3:
+        {
+            int count;
+            cout << "Kiek studentų generuoti? ";
+            while (!(cin >> count) || count < 0 || cin.peek() != '\n') {
+                cout << "Neteisinga įvestis. Įveskite teigiamą skaičių: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            students2 = generateRandomStudents(count);
+            generateGrades(students2);
+            for (auto& student : students2) {
+                students.push_back(student);
+            }
+            break;
+        }
+        case 4:
+        {
+            students2 = readStudentsFile(std::string("kursiokai.txt"));
+            for (auto& student : students2) {
+                students.push_back(student);
+            }
             if (!students2.empty()) {
                 printStudentList(students);
             }
 
-                break;
-            case 5:
-                int answ;
-                cout << "\n Pasirinkite rūšiavimo būdą: \n";
-                cout << "1-Pagal vardą: \n";
-                cout << "2-Pagal pavardę: \n";
-                cout << "3-Pagal galutinį vidurkį: \n";
-                cout << "4-Pagal medianą: \n";
-                if (students.empty()) {
-                    cout << "Sąraše nėra studentų";
-                } else {
+            break;
+        }
+        case 5:
+        {
+            int answ;
+            cout << "\n Pasirinkite rūšiavimo būdą: \n";
+            cout << "1-Pagal vardą: \n";
+            cout << "2-Pagal pavardę: \n";
+            cout << "3-Pagal galutinį vidurkį: \n";
+            cout << "4-Pagal medianą: \n";
+            if (students.empty()) {
+                cout << "Sąraše nėra studentų";
+            }
+            else {
+                cin >> answ;
+                while (cin.fail() || answ < 1 || answ > 4) {
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    cout << "Toks atsakymas negalimas. Bandykite iš naujo.";
                     cin >> answ;
-                    while (cin.fail() || answ < 1 || answ > 4 ) {
-                        cin.clear();
-                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                        cout << "Toks atsakymas negalimas. Bandykite iš naujo.";
-                        cin >> answ;
-                    }
-                    if (answ == 1) {
-                        students = sortByName(students);
-                        printStudentList(students);
-                    } else if (answ == 2) {
-                        students = sortBySurname(students);
-                        printStudentList(students);
-                    } else if (answ == 3) {
-                        students = sortByAverage(students);
-                        printStudentList(students);
-                    } else if (answ == 4) {
-                        students = sortByMedian(students);
-                        printStudentList(students);
-                    }
                 }
-                break;
-            case 6:
-
-                generateStudentsFile(1000);
-                generateStudentsFile(10000);
-                generateStudentsFile(100000);
-                generateStudentsFile(1000000);
-                generateStudentsFile(10000000);
-                cout<< "Failai sukurti sėkmingai"<<endl;
-
-                break;
-            case 7:
-                students2 = test();
-                for (auto &student: students2) {
-                    students.push_back(student);
+                if (answ == 1) {
+                    students = sortByName(students);
+                    printStudentList(students);
                 }
+                else if (answ == 2) {
+                    students = sortBySurname(students);
+                    printStudentList(students);
+                }
+                else if (answ == 3) {
+                    students = sortByAverage(students);
+                    printStudentList(students);
+                }
+                else if (answ == 4) {
+                    students = sortByMedian(students);
+                    printStudentList(students);
+                }
+            }
+            break;
+        }
+        case 6:
+        {
+            /*vector<Student> students1000 = generateStudentsFile(1000);
+            vector<Student> students10000 = generateStudentsFile(10000);
+            vector<Student> students100000 = generateStudentsFile(100000);
+            vector<Student> students1000000 = generateStudentsFile(1000000);
+            vector<Student> students10000000 = generateStudentsFile(10000000);*/
+            /*sortStudentsInFile(students1000);
+            sortStudentsInFile(students10000);
+            sortStudentsInFile(students100000);
+            sortStudentsInFile((students1000000));
+            sortStudentsInFile(students10000000);*/
+            generateStudentsFile(1000);
+            generateStudentsFile(10000);
+            generateStudentsFile(100000);
+            generateStudentsFile(1000000);
+            generateStudentsFile(10000000);
+            sortStudentsInFile(1000);
+            sortStudentsInFile(10000);
+            sortStudentsInFile(100000);
+            sortStudentsInFile(1000000);
+            sortStudentsInFile(10000000);
 
-            case 8:
-                cout << "Programa baigė darbą.\n";
-                break;
-            default:
-                cout << "Neteisingas pasirinkimas. Bandykite dar kartą.\n";
-                cin >> menu_choice;
+            cout << "Failai sukurti sėkmingai" << endl;
+            break;
+        }
+        case 7:
+        {
+            students2 = test();
+            for (auto& student : students2) {
+                students.push_back(student);
+            }
+            break;
+        }
+        case 8:
+        {
+            cout << "Programa baigė darbą.\n";
+            break;
+        }
+        default:
+        {
+            cout << "Neteisingas pasirinkimas. Bandykite dar kartą.\n";
+            cin >> menu_choice;
         }
 
         if (menu_choice >= 1 && menu_choice <= 3) {
             printStudentList(students);
+        }
         }
     } while (menu_choice != 8);
 

@@ -314,20 +314,21 @@ vector<Student> sortByMedian(vector<Student> students) {
     sort(students.begin(), students.end(), compareByMedian);
     return students;
 }
-vector<Student> generateStudentsFile(int numberOfStudents){
+void generateStudentsFile(int numberOfStudents){
   ofstream file;
+  vector <Student> students;
   string number = to_string(numberOfStudents);
   string filename = "students" + number + ".txt";
   file.open(filename);
   if (!file.is_open()) {
     cerr << "Nepavyko sukurti failo: " + filename;
-    return;
+
   }
   else{
-     vector <Student> students = generateRandomStudents(numberOfStudents);
+     students = generateRandomStudents(numberOfStudents);
      generateGrades(students);
      for (const Student &student : students) {
-       file << student.name << " " << student.surname << "       ";;
+       file << student.name << " " << student.surname << "       ";
        for(const double &grade : student.grades) {
          file << grade  << " ";
        }
@@ -335,10 +336,26 @@ vector<Student> generateStudentsFile(int numberOfStudents){
      }
 
   }
-
   file.close();
-  return students;
+
   }
-void sortStudentsInFile(int numberOfStudents){
-  ofstream file;
+
+void sortStudentsInFile(int numberOfStudents) {
+  ofstream file1, file2;
+  string filename1 = "kietekai" + to_string(numberOfStudents) + ".txt";
+  file1.open(filename1);
+  string filename2 = "vargsiukai" + to_string(numberOfStudents) + ".txt";
+  file2.open(filename2);
+  string filename3 = "students" + to_string(numberOfStudents) + ".txt";
+  vector<Student> students = readStudentsFile(filename3);
+  for(Student student : students) {
+    if(calculateFinalGradesAverage(student) < 5.00) {
+      file2 << student.name << " " << student.surname << "       " << calculateFinalGradesAverage(student)<<endl;
+    }
+    else {
+      file1 << student.name << " " << student.surname << "       " << calculateFinalGradesAverage(student)<<endl;
+    }
+  }
+  file1.close();
+  file2.close();
   }
