@@ -102,12 +102,13 @@ int main() {
                 break;
             case 6:
 
-                createFile(1000);
-                createFile(10000);
-                createFile(100000);
-                createFile(1000000);
-                createFile(10000000);
+                generateStudentsFile(1000);
+                generateStudentsFile(10000);
+                generateStudentsFile(100000);
+                generateStudentsFile(1000000);
+                generateStudentsFile(10000000);
                 cout<< "Failai sukurti sėkmingai"<<endl;
+
                 break;
             case 7:
                 students2 = test();

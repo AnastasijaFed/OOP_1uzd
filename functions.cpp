@@ -146,8 +146,6 @@ vector<string> loadFromFile(const string &filename) {
             list.push_back(line);
         }
         file.close();
-    } else {
-        cout << "Neįmanoma atidaryti failo " << filename << endl;
     }
     return list;
 }
@@ -316,7 +314,7 @@ vector<Student> sortByMedian(vector<Student> students) {
     sort(students.begin(), students.end(), compareByMedian);
     return students;
 }
-void createFile(int numberOfStudents){
+vector<Student> generateStudentsFile(int numberOfStudents){
   ofstream file;
   string number = to_string(numberOfStudents);
   string filename = "students" + number + ".txt";
@@ -339,4 +337,8 @@ void createFile(int numberOfStudents){
   }
 
   file.close();
+  return students;
+  }
+void sortStudentsInFile(int numberOfStudents){
+  ofstream file;
   }
