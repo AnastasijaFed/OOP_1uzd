@@ -360,7 +360,7 @@ void sortStudentsInFile(int numberOfStudents) {
   auto stop = std::chrono::high_resolution_clock::now();
     auto duration_ms = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
     double duration_s = duration_ms.count() / 1000.0;
-    cout<< numberOfStudents + " įrašų iš failo nuskaitymo laikas: " << duration_s << "sec" << endl;
+    cout<< numberOfStudents << " įrašų iš failo nuskaitymo laikas: " << duration_s << "sec" << endl;
 
     cout<< "Pagal ką norite rūšiuoti studentus?: " << endl;
     cout << "1-Pagal vardą: \n";
@@ -390,29 +390,28 @@ void sortStudentsInFile(int numberOfStudents) {
     auto stop2 = std::chrono::high_resolution_clock::now();
     auto duration_ms2 = std::chrono::duration_cast<std::chrono::milliseconds>(stop2 - start2);
     double duration_s2 = duration_ms2.count() / 1000.0;
-    cout<< numberOfStudents + " įrašų rūšiavimo laikas: " << duration_s2 << "sec" << endl;
+    cout<< numberOfStudents << " įrašų rūšiavimo laikas: " << duration_s2 << "sec" << endl;
 
     vector<Student> kietekai;
     vector<Student> vargsiukai;
     int i = 0;
     auto start3 = high_resolution_clock::now();
   for(Student student : students) {
-
     if(calculateFinalGradesAverage(student) < 5.00) {
       vargsiukai.push_back(student);
-      students.erase(students.begin() + i);
+      //students.erase(students.begin() + i);
 
     }
     else {
       kietekai.push_back(student);
-      students.erase(students.begin() + i);
+     // students.erase(students.begin() + i);
     }
     i++;
   }
   auto stop3 = std::chrono::high_resolution_clock::now();
   auto duration_ms3 = std::chrono::duration_cast<std::chrono::milliseconds>(stop3 - start3);
   double duration_s3 = duration_ms2.count() / 1000.0;
-  cout<< numberOfStudents + " įrašų padalijimo į du konteinerius laikas: " << duration_s3 << "sec" << endl;
+  cout<< numberOfStudents << " įrašų padalijimo į du konteinerius laikas: " << duration_s3 << "sec" << endl;
 
   auto start4 = high_resolution_clock::now();
   for(Student student : kietekai) {
@@ -421,7 +420,7 @@ void sortStudentsInFile(int numberOfStudents) {
   auto stop4 = std::chrono::high_resolution_clock::now();
     auto duration_ms4 = std::chrono::duration_cast<std::chrono::milliseconds>(stop4 - start4);
     double duration_s4 = duration_ms2.count() / 1000.0;
-    cout<< numberOfStudents + " įrašų kietekų įrašymo laikas: " << duration_s4 << "sec" << endl;
+    cout<< numberOfStudents << " įrašų kietekų įrašymo laikas: " << duration_s4 << "sec" << endl;
 
   auto start5 = high_resolution_clock::now();
   for(Student student : vargsiukai) {
@@ -430,7 +429,7 @@ void sortStudentsInFile(int numberOfStudents) {
   auto stop5 = std::chrono::high_resolution_clock::now();
     auto duration_ms5 = std::chrono::duration_cast<std::chrono::milliseconds>(stop5 - start5);
     double duration_s5 = duration_ms2.count() / 1000.0;
-    cout<< numberOfStudents + " įrašų vargšiukų įrašymo laikas: " << duration_s5 << "sec" << endl;
+    cout<< numberOfStudents << " įrašų vargšiukų įrašymo laikas: " << duration_s5 << "sec" << endl;
 
   file1.close();
   file2.close();

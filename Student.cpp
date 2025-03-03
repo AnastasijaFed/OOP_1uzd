@@ -122,12 +122,42 @@ int main() {
             generateStudentsFile(100000);
             generateStudentsFile(1000000);
             generateStudentsFile(10000000);*/
-
+            auto start = high_resolution_clock::now();
             sortStudentsInFile(1000);
+            auto stop = std::chrono::high_resolution_clock::now();
+            auto duration_ms = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+            double duration_s = duration_ms.count() / 1000.0;
+            cout<<"1000 įrašų testo laikas: " << duration_s << "sec" << endl;
+
+            auto start1 = high_resolution_clock::now();
             sortStudentsInFile(10000);
+            auto stop1 = std::chrono::high_resolution_clock::now();
+            auto duration_ms1 = std::chrono::duration_cast<std::chrono::milliseconds>(stop1 - start1);
+            double duration_s1 = duration_ms.count() / 1000.0;
+            cout<<"10000 įrašų testo laikas: " << duration_s1 << "sec" << endl;
+
+            auto start3 = high_resolution_clock::now();
             sortStudentsInFile(100000);
+            auto stop3 = std::chrono::high_resolution_clock::now();
+            auto duration_ms3 = std::chrono::duration_cast<std::chrono::milliseconds>(stop3 - start3);
+            double duration_s3 = duration_ms3.count() / 1000.0;
+            cout<<"100000 įrašų testo laikas: " << duration_s3 << "sec" << endl;
+
+            auto start4 = high_resolution_clock::now();
             sortStudentsInFile(1000000);
+            auto stop4 = std::chrono::high_resolution_clock::now();
+            auto duration_ms4 = std::chrono::duration_cast<std::chrono::milliseconds>(stop4 - start4);
+            double duration_s4 = duration_ms4.count() / 1000.0;
+            cout<<"1000000 įrašų testo laikas: " << duration_s4 << "sec" << endl;
+
+            auto start5 = high_resolution_clock::now();
             sortStudentsInFile(10000000);
+            auto stop5 = std::chrono::high_resolution_clock::now();
+            auto duration_ms5 = std::chrono::duration_cast<std::chrono::milliseconds>(stop5 - start5);
+            double duration_s5 = duration_ms5.count() / 1000.0;
+            cout<<"10000000 įrašų testo laikas: " << duration_s5 << "sec" << endl;
+
+
 
             cout << "Failai sukurti sėkmingai" << endl;
             break;
