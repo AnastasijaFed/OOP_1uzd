@@ -348,6 +348,7 @@ void generateStudentsFile(int numberOfStudents){
 
 void sortStudentsInFile(int numberOfStudents) {
   ofstream file1, file2;
+  int answ;
   string filename1 = "kietekai" + to_string(numberOfStudents) + ".txt";
   file1.open(filename1);
   string filename2 = "vargsiukai" + to_string(numberOfStudents) + ".txt";
@@ -359,16 +360,78 @@ void sortStudentsInFile(int numberOfStudents) {
   auto stop = std::chrono::high_resolution_clock::now();
     auto duration_ms = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
     double duration_s = duration_ms.count() / 1000.0;
-    cout<< numberOfStudents + " nuskaitymo laikas: " << duration_s << "sec" << endl;
+    cout<< numberOfStudents + " įrašų iš failo nuskaitymo laikas: " << duration_s << "sec" << endl;
 
+    cout<< "Pagal ką norite rūšiuoti studentus?: " << endl;
+    cout << "1-Pagal vardą: \n";
+    cout << "2-Pagal pavardę: \n";
+    cout << "3-Pagal galutinį vidurkį: \n";
+    cout << "4-Pagal medianą: \n";
+    cin >> answ;
+                while (cin.fail() || answ < 1 || answ > 4) {
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    cout << "Toks atsakymas negalimas. Bandykite iš naujo.";
+                    cin >> answ;
+                }
+                auto start2 = high_resolution_clock::now();
+                if (answ == 1) {
+                    students = sortByName(students);
+                }
+                else if (answ == 2) {
+                    students = sortBySurname(students);
+                }
+                else if (answ == 3) {
+                    students = sortByAverage(students);
+                }
+                else if (answ == 4) {
+                    students = sortByMedian(students);
+                }
+    auto stop2 = std::chrono::high_resolution_clock::now();
+    auto duration_ms2 = std::chrono::duration_cast<std::chrono::milliseconds>(stop2 - start2);
+    double duration_s2 = duration_ms2.count() / 1000.0;
+    cout<< numberOfStudents + " įrašų rūšiavimo laikas: " << duration_s2 << "sec" << endl;
+
+    vector<Student> kietekai;
+    vector<Student> vargsiukai;
+    int i = 0;
+    auto start3 = high_resolution_clock::now();
   for(Student student : students) {
+
     if(calculateFinalGradesAverage(student) < 5.00) {
-      file2 << student.name << " " << student.surname << "       " << calculateFinalGradesAverage(student)<<endl;
+      vargsiukai.push_back(student);
+      students.erase(students.begin() + i);
+
     }
     else {
-      file1 << student.name << " " << student.surname << "       " << calculateFinalGradesAverage(student)<<endl;
+      kietekai.push_back(student);
+      students.erase(students.begin() + i);
     }
+    i++;
   }
+  auto stop3 = std::chrono::high_resolution_clock::now();
+  auto duration_ms3 = std::chrono::duration_cast<std::chrono::milliseconds>(stop3 - start3);
+  double duration_s3 = duration_ms2.count() / 1000.0;
+  cout<< numberOfStudents + " įrašų padalijimo į du konteinerius laikas: " << duration_s3 << "sec" << endl;
+
+  auto start4 = high_resolution_clock::now();
+  for(Student student : kietekai) {
+    file1 << student.name << " " << student.surname << "       " << calculateFinalGradesAverage(student)<<endl;
+  }
+  auto stop4 = std::chrono::high_resolution_clock::now();
+    auto duration_ms4 = std::chrono::duration_cast<std::chrono::milliseconds>(stop4 - start4);
+    double duration_s4 = duration_ms2.count() / 1000.0;
+    cout<< numberOfStudents + " įrašų kietekų įrašymo laikas: " << duration_s4 << "sec" << endl;
+
+  auto start5 = high_resolution_clock::now();
+  for(Student student : vargsiukai) {
+    file2 << student.name << " " << student.surname << "       " << calculateFinalGradesAverage(student)<<endl;
+  }
+  auto stop5 = std::chrono::high_resolution_clock::now();
+    auto duration_ms5 = std::chrono::duration_cast<std::chrono::milliseconds>(stop5 - start5);
+    double duration_s5 = duration_ms2.count() / 1000.0;
+    cout<< numberOfStudents + " įrašų vargšiukų įrašymo laikas: " << duration_s5 << "sec" << endl;
+
   file1.close();
   file2.close();
   }
