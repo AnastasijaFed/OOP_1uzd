@@ -353,7 +353,14 @@ void sortStudentsInFile(int numberOfStudents) {
   string filename2 = "vargsiukai" + to_string(numberOfStudents) + ".txt";
   file2.open(filename2);
   string filename3 = "students" + to_string(numberOfStudents) + ".txt";
+
+  auto start = high_resolution_clock::now();
   vector<Student> students = readStudentsFile(filename3);
+  auto stop = std::chrono::high_resolution_clock::now();
+    auto duration_ms = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+    double duration_s = duration_ms.count() / 1000.0;
+    cout<< numberOfStudents + " nuskaitymo laikas: " << duration_s << "sec" << endl;
+
   for(Student student : students) {
     if(calculateFinalGradesAverage(student) < 5.00) {
       file2 << student.name << " " << student.surname << "       " << calculateFinalGradesAverage(student)<<endl;

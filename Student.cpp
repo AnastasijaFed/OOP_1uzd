@@ -117,17 +117,17 @@ int main() {
         case 6:
         {
 
-            generateStudentsFile(1000);
+            /*generateStudentsFile(1000);
             generateStudentsFile(10000);
             generateStudentsFile(100000);
             generateStudentsFile(1000000);
-            generateStudentsFile(10000000);
+            generateStudentsFile(10000000);*/
 
-            /*sortStudentsInFile(1000);
+            sortStudentsInFile(1000);
             sortStudentsInFile(10000);
             sortStudentsInFile(100000);
             sortStudentsInFile(1000000);
-            sortStudentsInFile(10000000);*/
+            sortStudentsInFile(10000000);
 
             cout << "Failai sukurti sėkmingai" << endl;
             break;
