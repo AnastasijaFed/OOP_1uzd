@@ -10,3 +10,11 @@ Matuojamas skirtingo dydžio failų sukūrimo laikas. Tyrimo patikimumui bandyma
 | students1000000.txt     | 6.186 | 6.207 | 6.347 | 6.2| 6.238| 6.2356|
 | students10000000.txt   | 68.331 | 69.294| 69.67 | 68.262| 68.326| 68.7766|
 
+Antrasis tyrimas skirtas duomenų apdorojimo spartos analizei. Atliekami šie veiksmai:
+
+1. Duomenų nuskaitymas iš failo
+2. Studentų rūšiavimas į dvi kategorijas
+3. Surūšiuotų studentų išvedimą į naujus failus.
+
+Kiekvienas žingsnis taip pat buvo kartojamas po 5 kartus ir pateiktas šių bandymų vidurkis.
+
