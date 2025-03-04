@@ -30,9 +30,10 @@ vector<Student> sortByName(vector<Student> students);
 vector<Student> sortBySurname(vector<Student> students);
 vector<Student> sortByAverage(vector<Student> students);
 vector<Student> sortByMedian(vector<Student> students);
+void logDuration(const string& message, const auto& start, const auto& stop);
 void generateStudentsFile(int numberOfStudents);
 void sortStudentsInFile(int numberOfStudents);
-void logDuration(const string& message, const auto& start, const auto& stop);
+
 
 
 
