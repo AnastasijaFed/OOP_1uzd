@@ -32,6 +32,7 @@ vector<Student> sortByAverage(vector<Student> students);
 vector<Student> sortByMedian(vector<Student> students);
 void generateStudentsFile(int numberOfStudents);
 void sortStudentsInFile(int numberOfStudents);
+void logDuration(const string& message, const auto& start, const auto& stop);
 
 
 

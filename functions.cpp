@@ -314,6 +314,11 @@ vector<Student> sortByMedian(vector<Student> students) {
     sort(students.begin(), students.end(), compareByMedian);
     return students;
 }
+void logDuration(const string& message, const auto& start, const auto& stop) {
+    auto duration_ms = duration_cast<milliseconds>(stop - start);
+    double duration_s = duration_ms.count() / 1000.0;
+    cout << message << fixed << setprecision(3) << duration_s << " sec" << endl;
+}
 void generateStudentsFile(int numberOfStudents){
   ofstream file;
   vector <Student> students;
@@ -394,20 +399,16 @@ void sortStudentsInFile(int numberOfStudents) {
 
     vector<Student> kietekai;
     vector<Student> vargsiukai;
-    int i = 0;
     auto start3 = high_resolution_clock::now();
   for(Student student : students) {
     if(calculateFinalGradesAverage(student) < 5.00) {
       vargsiukai.push_back(student);
-      //students.erase(students.begin() + i);
-
     }
     else {
       kietekai.push_back(student);
-     // students.erase(students.begin() + i);
     }
-    i++;
   }
+  students.erase(students.begin(), students.end());
   auto stop3 = std::chrono::high_resolution_clock::now();
   auto duration_ms3 = std::chrono::duration_cast<std::chrono::milliseconds>(stop3 - start3);
   double duration_s3 = duration_ms3.count() / 1000.0;
