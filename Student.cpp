@@ -10,19 +10,19 @@ int main() {
     list <StudentList> studentsList;
     studentsList = readFileLists(1000);
     studentsList = sortList(studentsList, 1000);
-    /*for (auto student : studentsList) {
-        cout<< student.name<< "   "<< student.surname<< "    " << calculateFinalGradesAverageList(student)<<endl;
-    }*/
+
     studentsList.clear();
     studentsList = readFileLists(10000);
     studentsList = sortList(studentsList, 10000);
     studentsList.clear();
     studentsList = readFileLists(100000);
+    studentsList = sortList(studentsList, 100000);
     studentsList.clear();
     studentsList = readFileLists(1000000);
+    studentsList = sortList(studentsList, 1000000);
     studentsList.clear();
     studentsList = readFileLists(10000000);
-    studentsList = sortList(studentsList, 10000);
+    studentsList = sortList(studentsList, 10000000);
 
 
     /*deque<StudentDeque> studentsDeque;
