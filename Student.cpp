@@ -7,7 +7,7 @@ using namespace std;
 
 
 int main() {
-    list <StudentList> studentsList;
+    /*list <StudentList> studentsList;
     studentsList = readFileLists(1000);
     studentsList.clear();
     studentsList = readFileLists(10000);
@@ -16,8 +16,18 @@ int main() {
     studentsList.clear();
     studentsList = readFileLists(1000000);
     studentsList.clear();
-    studentsList = readFileLists(10000000);
+    studentsList = readFileLists(10000000);*/
 
+    deque<StudentDeque> studentsDeque;
+    studentsDeque = readFileDeque(1000);
+    studentsDeque.clear();
+    studentsDeque = readFileDeque(10000);
+    studentsDeque.clear();
+    studentsDeque = readFileDeque(100000);
+    studentsDeque.clear();
+    studentsDeque = readFileDeque(1000000);
+    studentsDeque.clear();
+    studentsDeque = readFileDeque(10000000);
 
     return 0;
 }

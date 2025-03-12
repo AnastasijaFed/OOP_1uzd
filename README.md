@@ -1,3 +1,42 @@
+v1.0
+Šio tyrimo tikslas yra ištirti programos spartą naudojant skirtingus konteinerius: vector, list, deque. 
+Atlikti skirtingi veiksmai su konteineriais ir buvo matuojamas atlikimo veikimo laikas, pavaizduotas lentelėse:
+
+1. Nuskaitymas iš failo į atitinkamą konteinerį.
+   
+    1.1. Rezultatai skaitymo į List konteinerį:
+
+   | Įrašų skaičius faile | Pirmas bandymas | Antras bandymas | Trečias bandymas | Ketvirtas bandymas | Penktas bandymas | Vidurkis|
+   |---------|------|-----------------|-----------------|-----------------|-----------------|-----------------|
+   | 1000  | 0.001 | 0.002 | 0.002| 0.002| 0.002| |
+   | 10000 | 0.018 |  0.019 | 0.022 | 0.018| 0.019 | |
+   | 100000 | 0.195| 0.22 |  0.2| 0.216| 0.211 | |
+   | 1000000 | 2.023 | 2.013 | 2.009 | 2.012| 2.018| |
+   | 10000000| 20.616 | 20.63| 20.564 | 20.446| 20.402| |
+
+   **1.2. Rezultatai skaitymo į Deque konteinerį:**
+
+   | Įrašų skaičius faile | Pirmas bandymas | Antras bandymas | Trečias bandymas | Ketvirtas bandymas | Penktas bandymas | Vidurkis|
+   |---------|------|-----------------|-----------------|-----------------|-----------------|-----------------|
+   | 1000  | 0.002| 0.002 | 0.002| 0.002| 0.002| |
+   | 10000 | 0.02 |  0.021 | 0.021 | 0.021| 0.021 | |
+   | 100000 | 0.214| 0.216 |  0.223| 0.219| 0.224 | |
+   | 1000000 | 2.239 | 2.173 | 2.17 | 2.168| 2.173| |
+   | 10000000 | 27.198 | 25.904| 25.995 | 26.309| 26.451| |
+   1.3 Rezultatai skaitymo į Vector konteinerį:
+
+| Įrašų skaičius faile | Pirmas bandymas | Antras bandymas | Trečias bandymas | Ketvirtas bandymas | Penktas bandymas | Vidurkis|
+   |---------|------|-----------------|-----------------|-----------------|-----------------|-----------------|
+| 1000  |  0.014           | 0.014           | 0.014            | 0.013| 0.014| 0.0138   |
+| 10000 | 0.057           | 0.057           | 0.058            | 0.063| 0.064| 0.0598|
+| 100000 | 0.379 |  0.377 |  0.378| 0.627| 0.839| 0.52|
+| 1000000 | 3.818 | 3.7 | 3.797| 7.434| 6.293| 5.0084|
+| 10000000 | 40.703 | 40.693 | 40.651| 68.402| 66.579| 51.4056|
+
+
+
+
+v0.4
 Atlikti du tyrimai programos veikimo greičio analizei.
 Pirmasis tyrimas skirtas darbo su failais (failų sukurimas ir jo uždarymas) spartos analizei.
 Matuojamas skirtingo dydžio failų sukūrimo laikas. Tyrimo patikimumui bandymas buvo atliekamas penkis kartus. Bandymų rezultatai yra pateikti lentelėje (laikas skaičiuojamas sekundėmis):

@@ -7,6 +7,7 @@
 
 #include <deque>
 #include <string>
+using namespace std;
 
 struct StudentDeque {
     std::string name;
@@ -16,6 +17,7 @@ struct StudentDeque {
 
 };
 
+deque<StudentDeque> readFileDeque(int num);
 
 
 #endif //STUDENTDEQUE_H
