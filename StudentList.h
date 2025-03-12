@@ -16,6 +16,7 @@ struct StudentList {
     int exam_grade;
 
 };
+list<StudentList> readFileLists(int num);
 
 
 

@@ -6,6 +6,8 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
+using namespace std;
+using namespace std::chrono;
 
 list<StudentList> readFileLists(int num){
   list<StudentList> students;
@@ -18,7 +20,7 @@ list<StudentList> readFileLists(int num){
             string header, line;
             getline(file, header);
 
-
+            auto start = high_resolution_clock::now();
             while (getline(file, line)) {
                 StudentList student;
                 std::istringstream iss(line);
@@ -33,6 +35,10 @@ list<StudentList> readFileLists(int num){
 
                 students.push_back(student);
             }
+            auto stop = std::chrono::high_resolution_clock::now();
+            auto duration_ms = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+            double duration_s = duration_ms.count() / 1000.0;
+            cout << to_string(num) + " irasu skaitymas i list: "<< duration_s << "s" << endl;
 
             file.close();
         }

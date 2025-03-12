@@ -201,8 +201,8 @@ vector<Student> generateRandomStudents(int count) {
         }
         return students;
     } else {
-        random_shuffle(first_names.begin(), first_names.end());
-        random_shuffle(last_names.begin(), last_names.end());
+        /*random_shuffle(first_names.begin(), first_names.end());
+        random_shuffle(last_names.begin(), last_names.end());*/
         for (int i = 0; i < count; ++i) {
             Student student;
             student.name = first_names[i % first_names.size()];
