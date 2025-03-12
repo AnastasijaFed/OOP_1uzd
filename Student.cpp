@@ -7,18 +7,25 @@ using namespace std;
 
 
 int main() {
-    /*list <StudentList> studentsList;
+    list <StudentList> studentsList;
     studentsList = readFileLists(1000);
+    studentsList = sortList(studentsList, 1000);
+    /*for (auto student : studentsList) {
+        cout<< student.name<< "   "<< student.surname<< "    " << calculateFinalGradesAverageList(student)<<endl;
+    }*/
     studentsList.clear();
     studentsList = readFileLists(10000);
+    studentsList = sortList(studentsList, 10000);
     studentsList.clear();
     studentsList = readFileLists(100000);
     studentsList.clear();
     studentsList = readFileLists(1000000);
     studentsList.clear();
-    studentsList = readFileLists(10000000);*/
+    studentsList = readFileLists(10000000);
+    studentsList = sortList(studentsList, 10000);
 
-    deque<StudentDeque> studentsDeque;
+
+    /*deque<StudentDeque> studentsDeque;
     studentsDeque = readFileDeque(1000);
     studentsDeque.clear();
     studentsDeque = readFileDeque(10000);
@@ -27,7 +34,7 @@ int main() {
     studentsDeque.clear();
     studentsDeque = readFileDeque(1000000);
     studentsDeque.clear();
-    studentsDeque = readFileDeque(10000000);
+    studentsDeque = readFileDeque(10000000);*/
 
     return 0;
 }

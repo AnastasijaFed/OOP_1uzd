@@ -33,6 +33,9 @@ Atlikti skirtingi veiksmai su konteineriais ir buvo matuojamas atlikimo veikimo 
 | 1000000 | 3.818 | 3.7 | 3.797| 7.434| 6.293| 5.0084|
 | 10000000 | 40.703 | 40.693 | 40.651| 68.402| 66.579| 51.4056|
 
+2. Studentų rūšiavimas didėjimo tvarka (pagal galutinį pažymį iš vidurkio)
+2.1 
+
 
 
 

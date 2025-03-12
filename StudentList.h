@@ -17,7 +17,9 @@ struct StudentList {
 
 };
 list<StudentList> readFileLists(int num);
-
+double averageList(const StudentList &student);
+double calculateFinalGradesAverageList(const StudentList &student);
+list<StudentList> sortList(list<StudentList> students, int num);
 
 
 #endif //STUDENTLIST_H

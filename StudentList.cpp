@@ -6,6 +6,8 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
+#include <numeric>
+#include <ctime>
 using namespace std;
 using namespace std::chrono;
 
@@ -48,3 +50,27 @@ list<StudentList> readFileLists(int num){
     }
     return students;
   }
+double averageList(const StudentList &student) {
+    if (student.grades.empty()) {
+        return 0.0;
+    }
+    double average = accumulate(student.grades.begin(), student.grades.end(), 0.0) / student.grades.size();
+    return average;
+}
+double calculateFinalGradesAverageList(const StudentList &student) {
+    double average_grade = averageList(student);
+    return average_grade * 0.4 + student.exam_grade * 0.6;;
+}
+
+list<StudentList> sortList(list<StudentList> students, int num) {
+    timespec start, end;
+    clock_gettime(CLOCK_MONOTONIC_RAW, &start);
+    students.sort([](const StudentList &a, const StudentList &b) {return calculateFinalGradesAverageList(a)<calculateFinalGradesAverageList(b);});
+    clock_gettime(CLOCK_MONOTONIC_RAW, &end);
+    double elapsed_seconds =
+        (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / 1e9;
+    cout << to_string(num) + " irasu skaitymas i list: "<< elapsed_seconds << "s" << endl;
+
+
+    return students;
+}
