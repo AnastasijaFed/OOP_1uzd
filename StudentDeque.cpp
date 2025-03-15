@@ -84,4 +84,17 @@ deque<StudentDeque> sortDeque(deque<StudentDeque> students, int num) {
     cout << to_string(num) + " irasu rusiavimas i deque: "<< elapsed_seconds << "s" << endl;
     return students;
 }
+void splitToGroupsDeque(deque<StudentDeque> students, int num) {
+    deque<StudentDeque> kietekai;
+    deque<StudentDeque> vargsiukai;
+    timespec start, end;
+    clock_gettime(CLOCK_MONOTONIC_RAW, &start);
+    auto atskirta = stable_partition(students.begin(), students.end(), [](StudentDeque &student) {return student.final_grade < 5;} );
+    vargsiukai.assign(students.begin(), atskirta);
+    kietekai.assign(atskirta, students.end());
+    clock_gettime(CLOCK_MONOTONIC_RAW, &end);
+    double elapsed_seconds =
+        (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / 1e9;
+    cout << to_string(num) + " irasu dalijimas i deque: "<< elapsed_seconds << "s" << endl;
+}
 

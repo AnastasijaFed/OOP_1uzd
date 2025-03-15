@@ -385,7 +385,7 @@ void sortStudentsInFile(int numberOfStudents) {
     }
 	auto stopSort = high_resolution_clock::now();
     logDuration(to_string(numberOfStudents) + " įrašų rūšiavimo laikas: ", startSort, stopSort);
-    /*vector<Student> kietekai;
+    vector<Student> kietekai;
     vector<Student> vargsiukai;
     auto startSplit = high_resolution_clock::now();
     for (const Student& student : students) {
@@ -414,7 +414,7 @@ void sortStudentsInFile(int numberOfStudents) {
   }
   auto stopWrite2 = high_resolution_clock::now();
   logDuration(to_string(numberOfStudents) + " įrašymo į " + vargsiukaiFilename + " laikas: ", startWrite2, stopWrite2);
-  */
+
 
 
   file1.close();

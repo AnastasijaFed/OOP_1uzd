@@ -76,3 +76,16 @@ list<StudentList> sortList(list<StudentList> students, int num) {
 
     return students;
 }
+void splitInTwo(list<StudentList> &students, int num) {
+    list<StudentList> kietekai;
+    list<StudentList> vargsiukai;
+    timespec start, end;
+    clock_gettime(CLOCK_MONOTONIC_RAW, &start);
+    auto atskirta = stable_partition(students.begin(), students.end(), [](StudentList &student) {return student.final_grade < 5;} );
+    vargsiukai.assign(students.begin(), atskirta);
+    kietekai.assign(atskirta, students.end());
+    clock_gettime(CLOCK_MONOTONIC_RAW, &end);
+    double elapsed_seconds =
+        (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / 1e9;
+    cout << to_string(num) + " irasu dalijimas i list: "<< elapsed_seconds << "s" << endl;
+}

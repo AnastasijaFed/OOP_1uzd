@@ -23,6 +23,7 @@ deque<StudentDeque> readFileDeque(int num);
 double averageDeque(const StudentDeque &student);
 void calculateFinalGradesAverageDeque(const StudentDeque &student);
 deque<StudentDeque> sortDeque(deque<StudentDeque> students, int num);
+void splitToGroupsDeque(deque<StudentDeque> students, int num);
 
 
 
