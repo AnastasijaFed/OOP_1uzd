@@ -30,10 +30,11 @@ int main() {
     studentsList = readFileLists(1000000);
     studentsList = sortList(studentsList, 1000000);
     splitInTwo(studentsList, 1000000);
-    studentsList.clear();
+    studentsList.clear();*/
     studentsList = readFileLists(10000000);
     studentsList = sortList(studentsList, 10000000);
-    splitInTwo(studentsList, 10000000);*/
+    splitInTwo(studentsList, 10000000);
+    studentsList.erase(studentsList.begin(), studentsList.end());
 
 
     deque<StudentDeque> studentsDeque;

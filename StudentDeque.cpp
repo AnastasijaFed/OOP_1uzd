@@ -89,27 +89,20 @@ void splitToGroupsDeque(deque<StudentDeque> students, int num) {
     deque<StudentDeque> vargsiukai;
     timespec start, end;
     clock_gettime(CLOCK_MONOTONIC_RAW, &start);
-    auto atskirta = stable_partition(students.begin(), students.end(), [](StudentDeque &student) {return student.final_grade < 5;} );
-    for (auto it = students.begin(); it != atskirta; ++it) {
-        vargsiukai.push_back(std::move(*it));
-    }
-
-    // Move elements to kietekai
-    for (auto it = atskirta; it != students.end(); ++it) {
-        kietekai.push_back(std::move(*it));
+    for (int i = 0; i < num; i++) {
+        if (students[i].final_grade < 5) {
+            vargsiukai.push_back(students[i]);
+            students.shrink_to_fit();
+        }
+        else if (students[i].final_grade >= 5) {
+            kietekai.push_back(students[i]);
+            students.shrink_to_fit();
+        }
     }
     clock_gettime(CLOCK_MONOTONIC_RAW, &end);
     double elapsed_seconds =
         (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / 1e9;
     cout << to_string(num) + " irasu dalijimas i deque: "<< elapsed_seconds << "s" << endl;
-    cout<<"kietekai"<<endl;
-    for (int i = 0; i < 50; i++) {
 
-        cout<< kietekai[i].final_grade << endl;
-    }
-    cout<<"vargsikai"<<endl;
-    for (int i = 0; i < 50; i++) {
-        cout<<vargsiukai[i].final_grade << endl;
-    }
 }
 
