@@ -34,6 +34,7 @@ list<StudentList> readFileLists(int num){
 
                 student.exam_grade = static_cast<int>(student.grades.back());
                 student.grades.pop_back();
+                calculateFinalGradesAverageList(student);
 
                 students.push_back(student);
             }
@@ -57,15 +58,16 @@ double averageList(const StudentList &student) {
     double average = accumulate(student.grades.begin(), student.grades.end(), 0.0) / student.grades.size();
     return average;
 }
-double calculateFinalGradesAverageList(const StudentList &student) {
+void calculateFinalGradesAverageList(const StudentList &student) {
     double average_grade = averageList(student);
-    return average_grade * 0.4 + student.exam_grade * 0.6;;
+    double final = average_grade * 0.4 + student.exam_grade * 0.6;
+    student.final_grade = final;
 }
 
 list<StudentList> sortList(list<StudentList> students, int num) {
     timespec start, end;
     clock_gettime(CLOCK_MONOTONIC_RAW, &start);
-    students.sort([](const StudentList &a, const StudentList &b) {return calculateFinalGradesAverageList(a)<calculateFinalGradesAverageList(b);});
+    students.sort([](const StudentList &a, const StudentList &b) {return a.final_grade<b.final_grade;});
     clock_gettime(CLOCK_MONOTONIC_RAW, &end);
     double elapsed_seconds =
         (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / 1e9;

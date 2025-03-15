@@ -14,6 +14,7 @@ struct Student {
     std::string surname;
     std::vector<double> grades;
     int exam_grade;
+    mutable double final_grade;
 
 };
 

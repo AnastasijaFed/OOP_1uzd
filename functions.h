@@ -15,7 +15,7 @@ vector<Student> addStudents(vector<Student> students);
 double average(const Student &student);
 double median(const Student &student);
 double calculateFinalGradesMedian(const Student &student);
-double calculateFinalGradesAverage(const Student &student);
+void calculateFinalGradesAverage(const Student &student);
 void printStudentList(vector<Student> &students);
 void generateGrades(vector<Student> &students);
 vector<string> loadFromFile(const string &fileName);

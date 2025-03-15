@@ -14,11 +14,12 @@ struct StudentList {
     std::string surname;
     std::list<double> grades;
     int exam_grade;
+    mutable double final_grade;
 
 };
 list<StudentList> readFileLists(int num);
 double averageList(const StudentList &student);
-double calculateFinalGradesAverageList(const StudentList &student);
+void calculateFinalGradesAverageList(const StudentList &student);
 list<StudentList> sortList(list<StudentList> students, int num);
 
 

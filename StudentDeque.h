@@ -14,13 +14,14 @@ struct StudentDeque {
     std::string surname;
     std::deque<double> grades;
     int exam_grade;
+    mutable double final_grade;
 
 };
 
 deque<StudentDeque> readFileDeque(int num);
 
 double averageDeque(const StudentDeque &student);
-double calculateFinalGradesAverageDeque(const StudentDeque &student);
+void calculateFinalGradesAverageDeque(const StudentDeque &student);
 deque<StudentDeque> sortDeque(deque<StudentDeque> students, int num);
 
 

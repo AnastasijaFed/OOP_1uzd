@@ -42,6 +42,7 @@ deque<StudentDeque> readFileDeque(int num){
 
                 student.exam_grade = static_cast<int>(student.grades.back());
                 student.grades.pop_back();
+                calculateFinalGradesAverageDeque(student);
 
                 students.push_back(student);
             }
@@ -65,16 +66,17 @@ double averageDeque(const StudentDeque &student) {
     double average = accumulate(student.grades.begin(), student.grades.end(), 0.0) / student.grades.size();
     return average;
 }
-double calculateFinalGradesAverageDeque(const StudentDeque &student) {
+void calculateFinalGradesAverageDeque(const StudentDeque &student) {
     double average_grade = averageDeque(student);
-    return average_grade * 0.4 + student.exam_grade * 0.6;;
+    double final = average_grade * 0.4 + student.exam_grade * 0.6;
+    student.final_grade = final;
 }
 
 deque<StudentDeque> sortDeque(deque<StudentDeque> students, int num) {
     timespec start, end;
     clock_gettime(CLOCK_MONOTONIC_RAW, &start);
     sort(students.begin(), students.end(), [](StudentDeque &a, StudentDeque &b) {
-        return calculateFinalGradesAverageDeque(a) < calculateFinalGradesAverageDeque(b);
+        return a.final_grade < b.final_grade;
     });
     clock_gettime(CLOCK_MONOTONIC_RAW, &end);
     double elapsed_seconds =

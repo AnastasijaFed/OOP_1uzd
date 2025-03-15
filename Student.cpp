@@ -7,7 +7,14 @@ using namespace std;
 
 
 int main() {
-    /*list <StudentList> studentsList;
+
+    sortStudentsInFile(1000);
+    sortStudentsInFile(10000);
+    sortStudentsInFile(100000);
+    sortStudentsInFile(1000000);
+    sortStudentsInFile(10000000);
+
+   /* list <StudentList> studentsList;
     studentsList = readFileLists(1000);
     studentsList = sortList(studentsList, 1000);
 
@@ -25,9 +32,9 @@ int main() {
     studentsList = sortList(studentsList, 10000000);*/
 
 
-    deque<StudentDeque> studentsDeque;
-    //studentsDeque = readFileDeque(1000);
-    /*studentsDeque = sortDeque(studentsDeque, 1000);
+    /*deque<StudentDeque> studentsDeque;
+    studentsDeque = readFileDeque(1000);
+    studentsDeque = sortDeque(studentsDeque, 1000);
     studentsDeque.clear();
     studentsDeque = readFileDeque(10000);
     studentsDeque = sortDeque(studentsDeque, 10000);
@@ -37,9 +44,10 @@ int main() {
     studentsDeque.clear();
     studentsDeque = readFileDeque(1000000);
     studentsDeque = sortDeque(studentsDeque, 1000000);
-    studentsDeque.clear();*/
+    studentsDeque.clear();
     studentsDeque = readFileDeque(10000000);
     studentsDeque = sortDeque(studentsDeque, 10000000);
+    */
 
 
 
