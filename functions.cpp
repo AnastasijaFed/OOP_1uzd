@@ -360,7 +360,7 @@ void sortStudentsInFile(int numberOfStudents) {
   auto startRead = high_resolution_clock::now();
   vector<Student> students = readStudentsFile(studentsFilename);
   auto stopRead = high_resolution_clock::now();
-  logDuration(to_string(numberOfStudents) + " įrašų iš failo nuskaitymo laikas: ", startRead, stopRead);
+  //logDuration(to_string(numberOfStudents) + " įrašų iš failo nuskaitymo laikas: ", startRead, stopRead);
 
 	/*int sortChoice;
     cout<< "Pagal ką norite rūšiuoti studentus?: " << endl;
@@ -384,7 +384,7 @@ void sortStudentsInFile(int numberOfStudents) {
         case 4: students = sortByMedian(students); break;
     }
 	auto stopSort = high_resolution_clock::now();
-    logDuration(to_string(numberOfStudents) + " įrašų rūšiavimo laikas: ", startSort, stopSort);
+    //logDuration(to_string(numberOfStudents) + " įrašų rūšiavimo laikas: ", startSort, stopSort);
     vector<Student> kietekai;
     vector<Student> vargsiukai;
     auto startSplit = high_resolution_clock::now();
@@ -396,11 +396,11 @@ void sortStudentsInFile(int numberOfStudents) {
         }
     }
     auto stopSplit = high_resolution_clock::now();
-    logDuration(to_string(numberOfStudents) + " įrašų padalijimo į du konteinerius laikas:: ", startSplit, stopSplit);
+    logDuration(to_string(numberOfStudents) + " įrašų padalijimo į du konteinerius laikas vector: ", startSplit, stopSplit);
   	students.erase(students.begin(), students.end());
 
 
- auto startWrite1 = high_resolution_clock::now();
+ /*auto startWrite1 = high_resolution_clock::now();
   for(Student student : kietekai) {
     file1 << student.name << " " << student.surname << "       " << student.final_grade<<endl;
   }
@@ -414,6 +414,7 @@ void sortStudentsInFile(int numberOfStudents) {
   }
   auto stopWrite2 = high_resolution_clock::now();
   logDuration(to_string(numberOfStudents) + " įrašymo į " + vargsiukaiFilename + " laikas: ", startWrite2, stopWrite2);
+  */
 
 
 

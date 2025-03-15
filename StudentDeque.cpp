@@ -49,7 +49,7 @@ deque<StudentDeque> readFileDeque(int num){
             auto stop = std::chrono::high_resolution_clock::now();
             auto duration_ms = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
             double duration_s = duration_ms.count() / 1000.0;
-            cout << to_string(num) + " irasu skaitymas i deque: "<< duration_s << "s" << endl;
+          //  cout << to_string(num) + " irasu skaitymas i deque: "<< duration_s << "s" << endl;
 
             file.close();
         }
@@ -81,7 +81,7 @@ deque<StudentDeque> sortDeque(deque<StudentDeque> students, int num) {
     clock_gettime(CLOCK_MONOTONIC_RAW, &end);
     double elapsed_seconds =
         (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / 1e9;
-    cout << to_string(num) + " irasu rusiavimas i deque: "<< elapsed_seconds << "s" << endl;
+    //cout << to_string(num) + " irasu rusiavimas i deque: "<< elapsed_seconds << "s" << endl;
     return students;
 }
 void splitToGroupsDeque(deque<StudentDeque> students, int num) {
