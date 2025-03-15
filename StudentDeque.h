@@ -19,5 +19,10 @@ struct StudentDeque {
 
 deque<StudentDeque> readFileDeque(int num);
 
+double averageDeque(const StudentDeque &student);
+double calculateFinalGradesAverageDeque(const StudentDeque &student);
+deque<StudentDeque> sortDeque(deque<StudentDeque> students, int num);
+
+
 
 #endif //STUDENTDEQUE_H

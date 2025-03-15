@@ -3,6 +3,7 @@
 //
 
 #include "StudentDeque.h"
+#include <ctime>
 
 //
 // Created by Anastasija Fedorenko on 2025-03-12.
@@ -12,6 +13,9 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
+#include <numeric>
+
+
 using namespace std;
 using namespace std::chrono;
 
@@ -52,6 +56,30 @@ deque<StudentDeque> readFileDeque(int num){
     catch (const runtime_error &e) {
         cerr << "Klaida skaitant failą: " << e.what() << endl;
     }
+    return students;
+}
+double averageDeque(const StudentDeque &student) {
+    if (student.grades.empty()) {
+        return 0.0;
+    }
+    double average = accumulate(student.grades.begin(), student.grades.end(), 0.0) / student.grades.size();
+    return average;
+}
+double calculateFinalGradesAverageDeque(const StudentDeque &student) {
+    double average_grade = averageDeque(student);
+    return average_grade * 0.4 + student.exam_grade * 0.6;;
+}
+
+deque<StudentDeque> sortDeque(deque<StudentDeque> students, int num) {
+    timespec start, end;
+    clock_gettime(CLOCK_MONOTONIC_RAW, &start);
+    sort(students.begin(), students.end(), [](StudentDeque &a, StudentDeque &b) {
+        return calculateFinalGradesAverageDeque(a) < calculateFinalGradesAverageDeque(b);
+    });
+    clock_gettime(CLOCK_MONOTONIC_RAW, &end);
+    double elapsed_seconds =
+        (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / 1e9;
+    cout << to_string(num) + " irasu rusiavimas i deque: "<< elapsed_seconds << "s" << endl;
     return students;
 }
 
