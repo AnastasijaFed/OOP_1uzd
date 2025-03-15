@@ -82,8 +82,14 @@ void splitInTwo(list<StudentList> &students, int num) {
     timespec start, end;
     clock_gettime(CLOCK_MONOTONIC_RAW, &start);
     auto atskirta = stable_partition(students.begin(), students.end(), [](StudentList &student) {return student.final_grade < 5;} );
-    vargsiukai.assign(students.begin(), atskirta);
-    kietekai.assign(atskirta, students.end());
+    for (auto it = students.begin(); it != atskirta; ++it) {
+        vargsiukai.push_back(std::move(*it));
+    }
+
+    // Move elements to kietekai
+    for (auto it = atskirta; it != students.end(); ++it) {
+        kietekai.push_back(std::move(*it));
+    }
     clock_gettime(CLOCK_MONOTONIC_RAW, &end);
     double elapsed_seconds =
         (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / 1e9;
