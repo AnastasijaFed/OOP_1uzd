@@ -419,12 +419,26 @@ void strategyTwoVector(vector<Student>& students, vector<Student>& vargsiukai, i
     }
     vargsiukai.reserve(blogiukai);
     vargsiukai.assign(students.begin() , students.begin()+blogiukai);
-    students.erase(students.begin()+blogiukai, students.end());
+    students.erase(students.begin() , students.begin()+blogiukai);
 
     clock_gettime(CLOCK_MONOTONIC_RAW, &end);
     double elapsed_seconds =
         (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / 1e9;
     cout << to_string(num) + "  str 2 irasu dalijimas i vector: "<< elapsed_seconds << "s" << endl;
+
+}
+void strategyThreeVector(vector<Student>& students, vector<Student>& vargsiukai, int num) {
+    timespec start, end;
+    clock_gettime(CLOCK_MONOTONIC_RAW, &start);
+    vector<Student>::iterator bound;
+    bound = stable_partition(students.begin(), students.end(), [](const Student& s){return s.final_grade < 5.00;});
+    copy(students.begin() , bound, back_inserter(vargsiukai));
+    students.erase(students.begin(), bound);
+
+    clock_gettime(CLOCK_MONOTONIC_RAW, &end);
+    double elapsed_seconds =
+        (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / 1e9;
+    cout << to_string(num) + "  str 3 irasu dalijimas i vector: "<< elapsed_seconds << "s" << endl;
 
 
 }

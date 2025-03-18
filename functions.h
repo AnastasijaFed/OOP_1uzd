@@ -34,6 +34,7 @@ void logDuration(const string& message, const auto& start, const auto& stop);
 void generateStudentsFile(int numberOfStudents);
 void sortStudentsInFile(vector<Student>& students,int numberOfStudents);
 void strategyTwoVector(vector<Student>& students, vector<Student>& vargsiukai, int num);
+void strategyThreeVector(vector<Student>& students, vector<Student>& vargsiukai, int num);
 
 
 

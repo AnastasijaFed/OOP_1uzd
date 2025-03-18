@@ -25,6 +25,7 @@ void calculateFinalGradesAverageDeque(const StudentDeque &student);
 void sortDeque(deque<StudentDeque>& students, int num);
 void splitToGroupsDeque(deque<StudentDeque>& students, deque<StudentDeque>& kietekai, deque<StudentDeque>& vargsiukai, int num);
 void strategyTwoDeque(deque<StudentDeque>& students, deque<StudentDeque>& vargsiukai, int num);
+void strategyThreeDeque(deque<StudentDeque>& students, deque<StudentDeque>& vargsiukai, int num);
 
 
 #endif //STUDENTDEQUE_H

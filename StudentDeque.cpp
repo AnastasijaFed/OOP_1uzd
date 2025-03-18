@@ -120,4 +120,17 @@ void strategyTwoDeque(deque<StudentDeque>& students, deque<StudentDeque>& vargsi
         (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / 1e9;
     cout << to_string(num) + "  str 2 irasu dalijimas i deque: "<< elapsed_seconds << "s" << endl;
 }
+void strategyThreeDeque(deque<StudentDeque>& students, deque<StudentDeque>& vargsiukai, int num) {
+    timespec start, end;
+    clock_gettime(CLOCK_MONOTONIC_RAW, &start);
+    auto bound = stable_partition(students.begin(), students.end(), [](const StudentDeque& s){return s.final_grade < 5.00;});
+    copy(students.begin() , bound, back_inserter(vargsiukai));
+    students.erase(students.begin(), bound);
 
+    clock_gettime(CLOCK_MONOTONIC_RAW, &end);
+    double elapsed_seconds =
+        (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / 1e9;
+    cout << to_string(num) + "  str 3 irasu dalijimas i deque: "<< elapsed_seconds << "s" << endl;
+
+
+}

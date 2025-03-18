@@ -98,16 +98,16 @@ void splitInTwo(list<StudentList> &students, int num) {
     cout << to_string(num) + " irasu dalijimas i list: "<< elapsed_seconds << "s" << endl;
 }
 void strategyTwoList(list<StudentList> &students, list<StudentList> &vargsiukai,int num) {
-    cout << "Function called\n";
+
     timespec start, end;
     clock_gettime(CLOCK_MONOTONIC_RAW, &start);
     list<StudentList>::const_iterator it = students.begin();
     while (it != students.end()) {
         if (it->final_grade < 5) {
             vargsiukai.push_back(move(*it));
-            it = students.erase(it); // Erase the current element and get the next iterator
+            it = students.erase(it);
         } else {
-            ++it; // Move to the next element
+            ++it;
         }
     }
 
@@ -116,3 +116,17 @@ void strategyTwoList(list<StudentList> &students, list<StudentList> &vargsiukai,
         (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / 1e9;
     cout << to_string(num) + "  str 2 irasu dalijimas i list: "<< elapsed_seconds << "s" << endl;
 }
+void strategyThreeList(list<StudentList>& students, list<StudentList>& vargsiukai, int num) {
+    timespec start, end;
+    clock_gettime(CLOCK_MONOTONIC_RAW, &start);
+    auto bound = stable_partition(students.begin(), students.end(), [](const StudentList& s){return s.final_grade < 5.00;});
+    copy(students.begin() , bound, back_inserter(vargsiukai));
+    students.erase(students.begin(), bound);
+
+    clock_gettime(CLOCK_MONOTONIC_RAW, &end);
+    double elapsed_seconds =
+        (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / 1e9;
+    cout << to_string(num) + "  str 3 irasu dalijimas i list: "<< elapsed_seconds << "s" << endl;
+
+}
+
