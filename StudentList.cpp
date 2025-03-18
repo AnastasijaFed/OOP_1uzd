@@ -41,7 +41,7 @@ list<StudentList> readFileLists(int num){
             auto stop = std::chrono::high_resolution_clock::now();
             auto duration_ms = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
             double duration_s = duration_ms.count() / 1000.0;
-          //  cout << to_string(num) + " irasu skaitymas i list: "<< duration_s << "s" << endl;
+            cout << to_string(num) + " irasu skaitymas i list: "<< duration_s << "s" << endl;
 
             file.close();
         }
@@ -98,22 +98,3 @@ void splitInTwo(list<StudentList> &students, int num) {
     cout << to_string(num) + " irasu dalijimas i list: "<< elapsed_seconds << "s" << endl;
 }
 
-void strategyTwoList(list<StudentList> &students, list<StudentList> &vargsiukai,int num) {
-    cout << "Function called\n";
-    timespec start, end;
-    clock_gettime(CLOCK_MONOTONIC_RAW, &start);
-    list<StudentList>::const_iterator it = students.begin();
-    while (it != students.end()) {
-        if (it->final_grade < 5) {
-            vargsiukai.push_back(move(*it));
-            it = students.erase(it); // Erase the current element and get the next iterator
-        } else {
-            ++it; // Move to the next element
-        }
-    }
-
-    clock_gettime(CLOCK_MONOTONIC_RAW, &end);
-    double elapsed_seconds =
-        (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / 1e9;
-    cout << to_string(num) + "  str 2 irasu dalijimas i list: "<< elapsed_seconds << "s" << endl;
-}

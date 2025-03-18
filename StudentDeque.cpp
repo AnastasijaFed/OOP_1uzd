@@ -103,21 +103,3 @@ void splitToGroupsDeque(deque<StudentDeque>& students, deque<StudentDeque>& kiet
     cout << to_string(num) + " irasu dalijimas i deque: "<< elapsed_seconds << "s" << endl;
 
 }
-void strategyTwoDeque(deque<StudentDeque>& students, deque<StudentDeque>& vargsiukai, int num) {
-    timespec start, end;
-    clock_gettime(CLOCK_MONOTONIC_RAW, &start);
-    int numS = 0;
-    for (int i = 0; i < num; i++) {
-        if (students[i].final_grade < 5) {
-            vargsiukai.push_back(std::move(students[i]));
-            numS++;
-
-        }
-    }
-    students.erase(students.begin(), students.begin()+numS);
-    clock_gettime(CLOCK_MONOTONIC_RAW, &end);
-    double elapsed_seconds =
-        (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / 1e9;
-    cout << to_string(num) + "  str 2 irasu dalijimas i deque: "<< elapsed_seconds << "s" << endl;
-}
-

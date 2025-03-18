@@ -360,7 +360,7 @@ void sortStudentsInFile(vector<Student>& students,int numberOfStudents) {
   auto startRead = high_resolution_clock::now();
     students = readStudentsFile(studentsFilename);
   auto stopRead = high_resolution_clock::now();
-  //logDuration(to_string(numberOfStudents) + " įrašų iš failo nuskaitymo laikas: ", startRead, stopRead);
+  logDuration(to_string(numberOfStudents) + " įrašų iš failo nuskaitymo laikas: ", startRead, stopRead);
 
     int sortChoice = 3;
 
@@ -372,8 +372,8 @@ void sortStudentsInFile(vector<Student>& students,int numberOfStudents) {
         case 4: students = sortByMedian(students); break;
     }
 	auto stopSort = high_resolution_clock::now();
-    //logDuration(to_string(numberOfStudents) + " įrašų rūšiavimo laikas: ", startSort, stopSort);
-    /*vector<Student> kietekai;
+    logDuration(to_string(numberOfStudents) + " įrašų rūšiavimo laikas: ", startSort, stopSort);
+    vector<Student> kietekai;
     vector<Student> vargsiukai;
     auto startSplit = high_resolution_clock::now();
     for (const Student& student : students) {
@@ -386,10 +386,10 @@ void sortStudentsInFile(vector<Student>& students,int numberOfStudents) {
     auto stopSplit = high_resolution_clock::now();
     logDuration(to_string(numberOfStudents) + " įrašų padalijimo į du konteinerius laikas vector: ", startSplit, stopSplit);
   	students.erase(students.begin(), students.end());
-  	*/
 
 
- /*auto startWrite1 = high_resolution_clock::now();
+
+ auto startWrite1 = high_resolution_clock::now();
   for(Student student : kietekai) {
     file1 << student.name << " " << student.surname << "       " << student.final_grade<<endl;
   }
@@ -403,7 +403,7 @@ void sortStudentsInFile(vector<Student>& students,int numberOfStudents) {
   }
   auto stopWrite2 = high_resolution_clock::now();
   logDuration(to_string(numberOfStudents) + " įrašymo į " + vargsiukaiFilename + " laikas: ", startWrite2, stopWrite2);
-  */
+
 
 
 
@@ -411,23 +411,4 @@ void sortStudentsInFile(vector<Student>& students,int numberOfStudents) {
   file2.close();
   }
 
-void strategyTwoVector(vector<Student>& students, vector<Student>& vargsiukai, int num) {
-    cout << "Function called\n";
-    timespec start, end;
-    clock_gettime(CLOCK_MONOTONIC_RAW, &start);
 
-    for (auto it = students.begin(); it != students.end();) {
-        if (it->final_grade < 5) {
-            vargsiukai.push_back(move(*it));
-            it = students.erase(it);
-        } else {
-            it++;
-        }
-    }
-
-
-    clock_gettime(CLOCK_MONOTONIC_RAW, &end);
-    double elapsed_seconds =
-        (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / 1e9;
-    cout << to_string(num) + "  str 2 irasu dalijimas i vector: "<< elapsed_seconds << "s" << endl;
-}

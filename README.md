@@ -19,10 +19,10 @@ Atlikti skirtingi veiksmai su konteineriais ir buvo matuojamas atlikimo veikimo 
    | Įrašų skaičius faile | Pirmas bandymas | Antras bandymas | Trečias bandymas | Ketvirtas bandymas | Penktas bandymas | Vidurkis |
    |---------|------|-----------------|-----------------|-----------------|-----------------|----------|
    | 1000  | 0.002| 0.002 | 0.002| 0.002| 0.002| 0.002    |
-   | 10000 | 0.02 |  0.021 | 0.021 | 0.021| 0.021 |          |
-   | 100000 | 0.214| 0.216 |  0.223| 0.219| 0.224 |          |
-   | 1000000 | 2.239 | 2.173 | 2.17 | 2.168| 2.173|          |
-   | 10000000 | 27.198 | 25.904| 25.995 | 26.309| 26.451|          |
+   | 10000 | 0.02 |  0.021 | 0.021 | 0.021| 0.021 |   0.0208       |
+   | 100000 | 0.214| 0.216 |  0.223| 0.219| 0.224 |      0.2184    |
+   | 1000000 | 2.239 | 2.173 | 2.17 | 2.168| 2.173|       2.1846   |
+   | 10000000 | 27.198 | 25.904| 25.995 | 26.309| 26.451|   26.3714       |
    1.3 Rezultatai skaitymo į Vector konteinerį:
 
 | Įrašų skaičius faile | Pirmas bandymas | Antras bandymas | Trečias bandymas | Ketvirtas bandymas | Penktas bandymas | Vidurkis|
@@ -39,20 +39,20 @@ Atlikti skirtingi veiksmai su konteineriais ir buvo matuojamas atlikimo veikimo 
 
 | Įrašų skaičius faile | Pirmas bandymas | Antras bandymas | Trečias bandymas | Ketvirtas bandymas | Penktas bandymas | Vidurkis|
    |---------|------|-----------------|-----------------|-----------------|-----------------|-----------------|
-| 1000  |  6.8375e-05          | 5.4833e-05         | 5.5208e-05            | 5.5625e-05| 5.425e-05| 0.0138   |
-| 10000 | 0.000776459         | 0.000714625         | 0.000778375           |0.000696541| 0.000743917| 0.0598|
-| 100000 | 0.0101778 | 0.0134357 |  0.0186094| 0.0109893|0.0101133| 0.52|
-| 1000000 | 0.413999 | 0.396489| 0.437618| 0.505107| 0.436495| 5.0084|
-| 10000000 | 8.34264 | 8.01193| 8.17679| 8.01488| 8.13933| 51.4056|
+| 1000  |  6.8375e-05          | 5.4833e-05         | 5.5208e-05            | 5.5625e-05| 5.425e-05| 5.76582E-5  |
+| 10000 | 0.000776459         | 0.000714625         | 0.000778375           |0.000696541| 0.000743917| 0.0007419834|
+| 100000 | 0.0101778 | 0.0134357 |  0.0186094| 0.0109893|0.0101133| 0.0126651|
+| 1000000 | 0.413999 | 0.396489| 0.437618| 0.505107| 0.436495| 0.4379416|
+| 10000000 | 8.34264 | 8.01193| 8.17679| 8.01488| 8.13933| 8.137114|
 2.2. Rūšiavimas su Deque:
 
 | Įrašų skaičius faile | Pirmas bandymas | Antras bandymas | Trečias bandymas | Ketvirtas bandymas | Penktas bandymas | Vidurkis|
 |---------|------|-----------------|-----------------|-----------------|-----------------|-----------------|
-| 1000  |  1.792e-06      |1.917e-06         | 1.875e-06           | 1.916e-06s| 1.916e-06| 0.0138   |
-| 10000 | 6.5625e-05      | 7.3292e-05         | 3e-05           | 6.0708e-05| 6.8958e-05| 0.0598|
-| 100000 | 0.00140246 | 0.00144383 |  0.00110646| 0.00239883| 0.00141058| 0.52|
-| 1000000 | 0.105023 | 0.0354815|0.0365577| 0.0287554| 0.0330828| 5.0084|
-| 10000000 | 1.07304 | 0.380618| 0.399486| 0.402701|  0.349551| 51.4056|
+| 1000  |  1.792e-06      |1.917e-06         | 1.875e-06           | 1.916e-06s| 1.916e-06| 1.8832E-6   |
+| 10000 | 6.5625e-05      | 7.3292e-05         | 3e-05           | 6.0708e-05| 6.8958e-05| 5.97166E-5|
+| 100000 | 0.00140246 | 0.00144383 |  0.00110646| 0.00239883| 0.00141058|0.001552432|
+| 1000000 | 0.105023 | 0.0354815|0.0365577| 0.0287554| 0.0330828| 0.04778008|
+| 10000000 | 1.07304 | 0.380618| 0.399486| 0.402701|  0.349551|  0.5210792|
 
 2.3. Rūšiavimas su Vector
 
@@ -60,9 +60,9 @@ Atlikti skirtingi veiksmai su konteineriais ir buvo matuojamas atlikimo veikimo 
 |---------|------|-----------------|-----------------|-----------------|-----------------|-----------------|
 | 1000  | 0.001           | 0.001           | 0.001            | 0.001| 0.001| 0.018    |
 | 10000 | 0.012          | 0.014           | 0.014            | 0.014| 0.093| 0.0968|
-| 100000 | 0.135 | 0.144 |  0.142| 0.148| 0.141| 0.52|
-| 1000000 | 1.511 |1.436| 1.393| 1.475| 1.452| 5.0084|
-| 10000000 | 18.33 | 17.973| 17.974| 17.814| 17.834| 51.4056|
+| 100000 | 0.135 | 0.144 |  0.142| 0.148| 0.141| 0.142|
+| 1000000 | 1.511 |1.436| 1.393| 1.475| 1.452| 1.4534|
+| 10000000 | 18.33 | 17.973| 17.974| 17.814| 17.834| 17.985|
 
 3. Įrašų dalijimas į du konteinerius
 
@@ -86,38 +86,15 @@ Atlikti skirtingi veiksmai su konteineriais ir buvo matuojamas atlikimo veikimo 
 | 1000000              | 0.0361712       | 0.0391695       | 0.0389418        | 0.0382549          | 0.0374115        | 0.03798978   |
 | 10000000             | 2.93958         | 3.10767         | 3.02076          | 3.08732            | 2.97793          | 3.026652     |
 
+3.3. Įrašų dalijimas į Vector
 
-Algoritmas, naudojamas praeitame tyrime gali būti optimizuotas. Galime tuo įsitikinti naudodami 3 strategijas:
-
-1 strategija - dalijimas į du konteinerius, kur tas pats studentas yra tiek bendrame studentų konteineryje, tiek "vargšiukų" arba "kietekų".
-Ši strategija jau buvo panaudota praeitame tyrime ir rezultatai yra užfiksuoti lentelėse viršuje. Tačiau ši strategija yra labai neefektyvi atminties panaudojimo
-atvėju. Užfiksuotas 10000000 įrašų skirstymas su deque:
-
-
-2 strategija - bendro studentų konteinerio skaidymas panaudojant tik vieną konteinerį "vargšiukai". Tokiu būdu visi vagršiukai bus atskirame konteineryje,
-o likę studentai bendrame konteineryje bus "kietekai". Lentelėje pateikti tyrimo vidurkiai:
-
-List:
-
-| Įrašų skaičius | Vidurkis      |
-|----------------|---------------|
-| 1000           | 0.00014743775 |
-| 10000          | 0.00166201    |
-| 100000         | 0.02433255    |
-| 1000000        | 0.34394575    |
-| 10000000       | 4.329365      |
-
-Vector:
-
-Deque:
-
-| Įrašų skaičius | Vidurkis     |
-|----------------|--------------|
-| 1000           | 1.75832E-5   |
-| 10000          | 0.0001462588 |
-| 100000         | 0.002258808  |
-| 1000000        | 0.34394575   |
-| 10000000       | 0.543685     |
+| Įrašų skaičius faile | Pirmas bandymas | Antras bandymas | Trečias bandymas | Ketvirtas bandymas | Penktas bandymas | Vidurkis |
+|----------------------|-----------------|-----------------|------------------|--------------------|------------------|----------|
+| 1000                 | 0.001           | 0.001           | 0.001            | 0.001              | 0.001            | 0.001    |
+| 10000                | 0.007           | 0.007           | 0.007            | 0.011              | 0.011            | 0.0086   |
+| 100000               | 0.062           | 0.063           | 0.063            | 0.103              | 0.101            | 0.0784   |
+| 1000000              | 0.694           | 0.699           | 0.695            | 1.135              | 1.12             | 0.8686   |
+| 10000000             | 6.554           | 6.594           | 6.566            | 10.4               | 10.341           | 8.091    |
 
 
 v0.4
