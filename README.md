@@ -86,7 +86,7 @@ Atlikti skirtingi veiksmai su konteineriais ir buvo matuojamas atlikimo veikimo 
 | 1000000              | 2.58638         | 1.436           | 1.393            | 1.475              | 1.452            | 5.0084   |
 | 10000000             | 4.90112          | 5.40402         | 5.09065         | 4.66368             | 5.0537           | 51.4056  |
 
-<img width="387" alt="Screenshot 2025-03-18 at 12 03 38" src="https://github.com/user-attachments/assets/fdbeb86b-16c3-4aea-b8c6-c580d375dd16" />
+
 
 v0.4
 Atlikti du tyrimai programos veikimo greičio analizei.
