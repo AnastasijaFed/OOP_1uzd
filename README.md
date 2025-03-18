@@ -8,21 +8,21 @@ Atlikti skirtingi veiksmai su konteineriais ir buvo matuojamas atlikimo veikimo 
 
    | Įrašų skaičius faile | Pirmas bandymas | Antras bandymas | Trečias bandymas | Ketvirtas bandymas | Penktas bandymas | Vidurkis|
    |---------|------|-----------------|-----------------|-----------------|-----------------|-----------------|
-   | 1000  | 0.001 | 0.002 | 0.002| 0.002| 0.002| |
-   | 10000 | 0.018 |  0.019 | 0.022 | 0.018| 0.019 | |
-   | 100000 | 0.195| 0.22 |  0.2| 0.216| 0.211 | |
-   | 1000000 | 2.023 | 2.013 | 2.009 | 2.012| 2.018| |
-   | 10000000| 20.616 | 20.63| 20.564 | 20.446| 20.402| |
+   | 1000  | 0.001 | 0.002 | 0.002| 0.002| 0.002|0.0018 |
+   | 10000 | 0.018 |  0.019 | 0.022 | 0.018| 0.019 | 0.0192|
+   | 100000 | 0.195| 0.22 |  0.2| 0.216| 0.211 | 0.2084|
+   | 1000000 | 2.023 | 2.013 | 2.009 | 2.012| 2.018|2.015 |
+   | 10000000| 20.616 | 20.63| 20.564 | 20.446| 20.402| 20.5316|
 
    **1.2. Rezultatai skaitymo į Deque konteinerį:**
 
-   | Įrašų skaičius faile | Pirmas bandymas | Antras bandymas | Trečias bandymas | Ketvirtas bandymas | Penktas bandymas | Vidurkis|
-   |---------|------|-----------------|-----------------|-----------------|-----------------|-----------------|
-   | 1000  | 0.002| 0.002 | 0.002| 0.002| 0.002| |
-   | 10000 | 0.02 |  0.021 | 0.021 | 0.021| 0.021 | |
-   | 100000 | 0.214| 0.216 |  0.223| 0.219| 0.224 | |
-   | 1000000 | 2.239 | 2.173 | 2.17 | 2.168| 2.173| |
-   | 10000000 | 27.198 | 25.904| 25.995 | 26.309| 26.451| |
+   | Įrašų skaičius faile | Pirmas bandymas | Antras bandymas | Trečias bandymas | Ketvirtas bandymas | Penktas bandymas | Vidurkis |
+   |---------|------|-----------------|-----------------|-----------------|-----------------|----------|
+   | 1000  | 0.002| 0.002 | 0.002| 0.002| 0.002| 0.002    |
+   | 10000 | 0.02 |  0.021 | 0.021 | 0.021| 0.021 |          |
+   | 100000 | 0.214| 0.216 |  0.223| 0.219| 0.224 |          |
+   | 1000000 | 2.239 | 2.173 | 2.17 | 2.168| 2.173|          |
+   | 10000000 | 27.198 | 25.904| 25.995 | 26.309| 26.451|          |
    1.3 Rezultatai skaitymo į Vector konteinerį:
 
 | Įrašų skaičius faile | Pirmas bandymas | Antras bandymas | Trečias bandymas | Ketvirtas bandymas | Penktas bandymas | Vidurkis|
@@ -78,14 +78,46 @@ Atlikti skirtingi veiksmai su konteineriais ir buvo matuojamas atlikimo veikimo 
 
 3.2. Įrašų dalijimas į Deque
 
-| Įrašų skaičius faile | Pirmas bandymas | Antras bandymas | Trečias bandymas | Ketvirtas bandymas | Penktas bandymas | Vidurkis |
-|----------------------|-----------------|-----------------|------------------|--------------------|------------------|----------|
-| 1000                 | 0.000751042     | 0.001           | 0.001            | 0.001              | 0.001            | 0.018    |
-| 10000                | 0.0167988       | 0.014           | 0.014            | 0.014              | 0.093            | 0.0968   |
-| 100000               | 0.124646        | 0.144           | 0.142            | 0.148              | 0.141            | 0.52     |
-| 1000000              | 2.58638         | 1.436           | 1.393            | 1.475              | 1.452            | 5.0084   |
-| 10000000             | 4.90112          | 5.40402         | 5.09065         | 4.66368             | 5.0537           | 51.4056  |
+| Įrašų skaičius faile | Pirmas bandymas | Antras bandymas | Trečias bandymas | Ketvirtas bandymas | Penktas bandymas | Vidurkis     |
+|----------------------|-----------------|-----------------|------------------|--------------------|------------------|--------------|
+| 1000                 | 0.000129417     | 3.7417e-05      | 3.425e-05        | 2.8083e-05         | 2.6167e-05       | 5.10668e-05  |
+| 10000                | 0.000269834     | 0.000264333     | 0.000286709      | 0.000259           | 0.00028225       | 0.0002724252 |
+| 100000               | 0.00298096      | 0.00301658      | 0.003529         | 0.00297167         | 0.00314108       | 0.003127858  |
+| 1000000              | 0.0361712       | 0.0391695       | 0.0389418        | 0.0382549          | 0.0374115        | 0.03798978   |
+| 10000000             | 2.93958         | 3.10767         | 3.02076          | 3.08732            | 2.97793          | 3.026652     |
 
+
+Algoritmas, naudojamas praeitame tyrime gali būti optimizuotas. Galime tuo įsitikinti naudodami 3 strategijas:
+
+1 strategija - dalijimas į du konteinerius, kur tas pats studentas yra tiek bendrame studentų konteineryje, tiek "vargšiukų" arba "kietekų".
+Ši strategija jau buvo panaudota praeitame tyrime ir rezultatai yra užfiksuoti lentelėse viršuje. Tačiau ši strategija yra labai neefektyvi atminties panaudojimo
+atvėju. Užfiksuotas 10000000 įrašų skirstymas su deque:
+
+
+2 strategija - bendro studentų konteinerio skaidymas panaudojant tik vieną konteinerį "vargšiukai". Tokiu būdu visi vagršiukai bus atskirame konteineryje,
+o likę studentai bendrame konteineryje bus "kietekai". Lentelėje pateikti tyrimo vidurkiai:
+
+List:
+
+| Įrašų skaičius | Vidurkis      |
+|----------------|---------------|
+| 1000           | 0.00014743775 |
+| 10000          | 0.00166201    |
+| 100000         | 0.02433255    |
+| 1000000        | 0.34394575    |
+| 10000000       | 4.329365      |
+
+Vector:
+
+Deque:
+
+| Įrašų skaičius | Vidurkis     |
+|----------------|--------------|
+| 1000           | 1.75832E-5   |
+| 10000          | 0.0001462588 |
+| 100000         | 0.002258808  |
+| 1000000        | 0.34394575   |
+| 10000000       | 0.543685     |
 
 
 v0.4

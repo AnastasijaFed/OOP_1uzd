@@ -32,8 +32,8 @@ vector<Student> sortByAverage(vector<Student> students);
 vector<Student> sortByMedian(vector<Student> students);
 void logDuration(const string& message, const auto& start, const auto& stop);
 void generateStudentsFile(int numberOfStudents);
-void sortStudentsInFile(int numberOfStudents);
-
+void sortStudentsInFile(vector<Student>& students,int numberOfStudents);
+void strategyTwoVector(vector<Student>& students, vector<Student>& vagrsiukai, int num);
 
 
 
