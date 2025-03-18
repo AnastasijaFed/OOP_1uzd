@@ -49,7 +49,7 @@ deque<StudentDeque> readFileDeque(int num){
             auto stop = std::chrono::high_resolution_clock::now();
             auto duration_ms = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
             double duration_s = duration_ms.count() / 1000.0;
-          //  cout << to_string(num) + " irasu skaitymas i deque: "<< duration_s << "s" << endl;
+          cout << to_string(num) + " irasu skaitymas i deque: "<< duration_s << "s" << endl;
 
             file.close();
         }
@@ -72,7 +72,7 @@ void calculateFinalGradesAverageDeque(const StudentDeque &student) {
     student.final_grade = final;
 }
 
-deque<StudentDeque> sortDeque(deque<StudentDeque> students, int num) {
+void sortDeque(deque<StudentDeque>& students, int num) {
     timespec start, end;
     clock_gettime(CLOCK_MONOTONIC_RAW, &start);
     sort(students.begin(), students.end(), [](StudentDeque &a, StudentDeque &b) {
@@ -81,24 +81,31 @@ deque<StudentDeque> sortDeque(deque<StudentDeque> students, int num) {
     clock_gettime(CLOCK_MONOTONIC_RAW, &end);
     double elapsed_seconds =
         (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / 1e9;
-    //cout << to_string(num) + " irasu rusiavimas i deque: "<< elapsed_seconds << "s" << endl;
-    return students;
+    cout << to_string(num) + " irasu rusiavimas i deque: "<< elapsed_seconds << "s" << endl;
+
 }
-void splitToGroupsDeque(deque<StudentDeque> students, int num) {
-    deque<StudentDeque> kietekai;
-    deque<StudentDeque> vargsiukai;
+void splitToGroupsDeque(deque<StudentDeque>& students, deque<StudentDeque>& kietekai, deque<StudentDeque>& vargsiukai, int num) {
+
     timespec start, end;
     clock_gettime(CLOCK_MONOTONIC_RAW, &start);
     for (int i = 0; i < num; i++) {
         if (students[i].final_grade < 5) {
             vargsiukai.push_back(students[i]);
-            students.shrink_to_fit();
+
         }
         else if (students[i].final_grade >= 5) {
             kietekai.push_back(students[i]);
-            students.shrink_to_fit();
+
+
         }
     }
+    /*int i = 0;
+    while (students[i].final_grade < 5.0 && i < num) {
+        i += 1;
+    }
+    copy(students.begin() + i, students.end(), std::back_inserter(vargsiukai));
+    copy(students.begin(), students.begin() + i, std::back_inserter(kietekai));*/
+    students.clear();
     clock_gettime(CLOCK_MONOTONIC_RAW, &end);
     double elapsed_seconds =
         (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / 1e9;

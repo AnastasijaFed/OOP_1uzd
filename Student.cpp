@@ -31,10 +31,10 @@ int main() {
     studentsList = sortList(studentsList, 1000000);
     splitInTwo(studentsList, 1000000);
     studentsList.clear();*/
-    studentsList = readFileLists(10000000);
+    /*studentsList = readFileLists(10000000);
     studentsList = sortList(studentsList, 10000000);
     splitInTwo(studentsList, 10000000);
-    studentsList.erase(studentsList.begin(), studentsList.end());
+    studentsList.erase(studentsList.begin(), studentsList.end());*/
 
 
     deque<StudentDeque> studentsDeque;
@@ -55,8 +55,10 @@ int main() {
     splitToGroupsDeque(studentsDeque, 1000000);
     studentsDeque.clear();*/
     studentsDeque = readFileDeque(10000000);
-    studentsDeque = sortDeque(studentsDeque, 10000000);
-    splitToGroupsDeque(studentsDeque, 10000000);
+    sortDeque(studentsDeque, 10000000);
+    deque<StudentDeque> kietekai;
+    deque<StudentDeque> vargsiukai;
+    splitToGroupsDeque(studentsDeque, kietekai, vargsiukai,10000000);
     studentsDeque.clear();
 
 

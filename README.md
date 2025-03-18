@@ -74,7 +74,7 @@ Atlikti skirtingi veiksmai su konteineriais ir buvo matuojamas atlikimo veikimo 
 | 10000                | 0.00145558      | 0.014           | 0.014            | 0.014              | 0.093            | 0.0968   |
 | 100000               | 0.035963        | 0.144           | 0.142            | 0.148              | 0.141            | 0.52     |
 | 1000000              | 0.508848        | 1.436           | 1.393            | 1.475              | 1.452            | 5.0084   |
-| 10000000             | 6.78405         | 17.973          | 17.974           | 17.814             | 17.834           | 51.4056  |
+| 10000000             | 4.90112         | 5.40402         | 5.09065          | 4.66368            | 5.0537           | 51.4056  |
 
 3.2. Įrašų dalijimas į Deque
 
@@ -84,7 +84,7 @@ Atlikti skirtingi veiksmai su konteineriais ir buvo matuojamas atlikimo veikimo 
 | 10000                | 0.0167988       | 0.014           | 0.014            | 0.014              | 0.093            | 0.0968   |
 | 100000               | 0.124646        | 0.144           | 0.142            | 0.148              | 0.141            | 0.52     |
 | 1000000              | 2.58638         | 1.436           | 1.393            | 1.475              | 1.452            | 5.0084   |
-| 10000000             | 18.33           | 17.973          | 17.974           | 17.814             | 17.834           | 51.4056  |
+| 10000000             | 4.90112          | 5.40402         | 5.09065         | 4.66368             | 5.0537           | 51.4056  |
 
 
 
@@ -93,13 +93,13 @@ Atlikti du tyrimai programos veikimo greičio analizei.
 Pirmasis tyrimas skirtas darbo su failais (failų sukurimas ir jo uždarymas) spartos analizei.
 Matuojamas skirtingo dydžio failų sukūrimo laikas. Tyrimo patikimumui bandymas buvo atliekamas penkis kartus. Bandymų rezultatai yra pateikti lentelėje (laikas skaičiuojamas sekundėmis):
 
-| Failo pavadinimas | Pirmas bandymas | Antras bandymas | Trečias bandymas | Ketvirtas bandymas | Penktas bandymas | Vidurkis|
-|-------------------|------|-----------------|-----------------|-----------------|-----------------|-----------------|
-| students1000.txt     | 0.014 | 0.013 | 0.014| 0.014| 0.014| 0.014|
-| students10000.txt     | 0.071 |  0.071 | 0.071 | 0.07| 0.071 | 0.71|
-| students100000.txt     | 0.627| 0.622 |  0.63 | 0.619| 0.616 | 0.6318|
-| students1000000.txt     | 6.186 | 6.207 | 6.347 | 6.2| 6.238| 6.2356|
-| students10000000.txt   | 68.331 | 69.294| 69.67 | 68.262| 68.326| 68.7766|
+| Failo pavadinimas    | Pirmas bandymas | Antras bandymas | Trečias bandymas | Ketvirtas bandymas | Penktas bandymas | Vidurkis |
+|----------------------|-----------------|-----------------|------------------|--------------------|------------------|----------|
+| students1000.txt     | 0.014           | 0.013           | 0.014            | 0.014              | 0.014            | 0.014    |
+| students10000.txt    | 0.071           | 0.071           | 0.071            | 0.07               | 0.071            | 0.71     |
+| students100000.txt   | 0.627           | 0.622           | 0.63             | 0.619              | 0.616            | 0.6318   |
+| students1000000.txt  | 6.186           | 6.207           | 6.347            | 6.2                | 6.238            | 6.2356   |
+| students10000000.txt | 68.331          | 69.294          | 69.67            | 68.262             | 68.326           | 68.7766  |
 
 Antrasis tyrimas skirtas duomenų apdorojimo spartos analizei. Atliekami šie veiksmai:
 
