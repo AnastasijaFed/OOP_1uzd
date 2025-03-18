@@ -362,15 +362,10 @@ void sortStudentsInFile(vector<Student>& students,int numberOfStudents) {
   auto stopRead = high_resolution_clock::now();
   logDuration(to_string(numberOfStudents) + " įrašų iš failo nuskaitymo laikas: ", startRead, stopRead);
 
-    int sortChoice = 3;
 
     auto startSort = high_resolution_clock::now();
-    switch (sortChoice) {
-        case 1: students = sortByName(students); break;
-        case 2: students = sortBySurname(students); break;
-        case 3: students = sortByAverage(students); break;
-        case 4: students = sortByMedian(students); break;
-    }
+     students = sortByAverage(students);
+
 	auto stopSort = high_resolution_clock::now();
     logDuration(to_string(numberOfStudents) + " įrašų rūšiavimo laikas: ", startSort, stopSort);
     vector<Student> kietekai;
