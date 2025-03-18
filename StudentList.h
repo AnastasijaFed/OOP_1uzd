@@ -22,6 +22,7 @@ double averageList(const StudentList &student);
 void calculateFinalGradesAverageList(const StudentList &student);
 list<StudentList> sortList(list<StudentList> students, int num);
 void splitInTwo(list<StudentList> &students, int num);
+void strategyTwoList(list<StudentList> &students, list<StudentList> &vargsiukai,int num);
 
 
 

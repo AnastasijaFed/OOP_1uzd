@@ -96,6 +96,49 @@ Atlikti skirtingi veiksmai su konteineriais ir buvo matuojamas atlikimo veikimo 
 | 1000000              | 0.694           | 0.699           | 0.695            | 1.135              | 1.12             | 0.8686   |
 | 10000000             | 6.554           | 6.594           | 6.566            | 10.4               | 10.341           | 8.091    |
 
+Algoritmas, naudojamas praeitame tyrime, gali būti optimizuotas. Galime tuo įsitikinti naudodami 3 strategijas:
+
+1 strategija - dalijimas į du konteinerius, kur tas pats studentas yra tiek bendrame studentų konteineryje, tiek "vargšiukų" arba "kietekų".
+Ši strategija jau buvo panaudota praeitame tyrime ir rezultatai yra užfiksuoti lentelėse viršuje. Tačiau ši strategija yra labai neefektyvi atminties panaudojimo
+atvėju. Užfiksuotas 10000000 įrašų skirstymas su deque:
+
+
+2 strategija - bendro studentų konteinerio skaidymas panaudojant tik vieną konteinerį "vargšiukai". Tokiu būdu visi vagršiukai bus atskirame konteineryje,
+o likę studentai bendrame konteineryje bus "kietekai". Lentelėje pateikti tyrimo vidurkiai:
+
+List:
+
+| Įrašų skaičius | Vidurkis      |
+|----------------|---------------|
+| 1000           | 0.00014743775 |
+| 10000          | 0.00166201    |
+| 100000         | 0.02433255    |
+| 1000000        | 0.34394575    |
+| 10000000       | 4.329365      |
+
+Vector:
+
+| Įrašų skaičius | Vidurkis     |
+|----------------|--------------|
+| 1000           | 3.6875E-5    |
+| 10000          | 0.0003421418 |
+| 100000         | 0.0037645168 |
+| 1000000        | 0.0591652584 |
+| 10000000       | 0.7618154    |
+
+Deque:
+
+| Įrašų skaičius | Vidurkis     |
+|----------------|--------------|
+| 1000           | 1.75832E-5   |
+| 10000          | 0.0001462588 |
+| 100000         | 0.002258808  |
+| 1000000        | 0.34394575   |
+| 10000000       | 0.543685     |
+
+
+3 strategija - bus optimizuota antra strategija efektyvesnius algoritmus
+
 
 v0.4
 Atlikti du tyrimai programos veikimo greičio analizei.

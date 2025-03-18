@@ -319,7 +319,7 @@ vector<Student> sortByMedian(vector<Student> students) {
 void logDuration(const string& message, const high_resolution_clock::time_point& start, const high_resolution_clock::time_point& stop) {
     auto duration_ms = duration_cast<milliseconds>(stop - start);
     double duration_s = duration_ms.count() / 1000.0;
-    cout << message << fixed << setprecision(3) << duration_s << " sec" << endl;
+    cout << message << fixed << setprecision(10) << duration_s << " sec" << endl;
 }
 
 void generateStudentsFile(int numberOfStudents){
@@ -368,6 +368,7 @@ void sortStudentsInFile(vector<Student>& students,int numberOfStudents) {
 
 	auto stopSort = high_resolution_clock::now();
     logDuration(to_string(numberOfStudents) + " įrašų rūšiavimo laikas: ", startSort, stopSort);
+    /*
     vector<Student> kietekai;
     vector<Student> vargsiukai;
     auto startSplit = high_resolution_clock::now();
@@ -398,6 +399,7 @@ void sortStudentsInFile(vector<Student>& students,int numberOfStudents) {
   }
   auto stopWrite2 = high_resolution_clock::now();
   logDuration(to_string(numberOfStudents) + " įrašymo į " + vargsiukaiFilename + " laikas: ", startWrite2, stopWrite2);
+  */
 
 
 
@@ -405,5 +407,27 @@ void sortStudentsInFile(vector<Student>& students,int numberOfStudents) {
   file1.close();
   file2.close();
   }
+void strategyTwoVector(vector<Student>& students, vector<Student>& vargsiukai, int num) {
+    timespec start, end;
+    clock_gettime(CLOCK_MONOTONIC_RAW, &start);
+    int blogiukai = 0;
+
+    for (int i = 0; i < num; i++) {
+        if (students[i].final_grade < 5.00) {
+            blogiukai++;
+        }
+    }
+    vargsiukai.reserve(blogiukai);
+    vargsiukai.assign(students.begin() , students.begin()+blogiukai);
+    students.erase(students.begin()+blogiukai, students.end());
+
+    clock_gettime(CLOCK_MONOTONIC_RAW, &end);
+    double elapsed_seconds =
+        (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / 1e9;
+    cout << to_string(num) + "  str 2 irasu dalijimas i vector: "<< elapsed_seconds << "s" << endl;
+
+
+}
+
 
 
