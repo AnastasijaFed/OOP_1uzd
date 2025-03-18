@@ -1,3 +1,42 @@
+
+## Programos diegimo instrukcija
+1. Parsisiųkite programos failus
+2. Parsisiuskite ir įdiekite G++ kompiliatorių (jei dar jo neturite)
+**!Svarbu! Turi buti C++20 versija**
+  
+3. Atsidarykite terminalą ir jame įveskite programos vietą diske
+4. Tuomet į terminala įrašykite šias eilutes:
+
+g++ -c Student.cpp functions.cpp StudentDeque.cpp StudentList.cpp
+
+g++ -o main Student.o functions.o StudentDeque.o StudentList.o
+
+main
+5. Įvedus šias eilutes programa pasileis
+
+## Release aprašymai
+
+### Release v0.1
+
+Šiame release buvo įgyvendinta pagrindine programos veikimo logika: galutinių pažymių apskaičiavimas pagal vidurkį ir medianą bei duomenų įvedimas ranka.
+
+### Release v0.2
+
+Atsirado galimybė duomenis nuskaityti iš failo. Taip pat atsirado galimybė rūšiuoti studentus pagal naudotojo pasirinktą parametrą.
+
+### Release v0.3
+
+Funkcijos perkeltos į atskirą failą ir pridėti try catch blokai programos sklandesniam veikimui.
+
+### Release v0.4
+
+Šioje versijoje pradėtas spartos tyrimas, aprašytas apačioje. Pridėti įvesties tikrinimai, kad programa sklandžiai veiktų vartotojui įvedus neteisingo tipo įvesties duomenis ir pridėta galimybė studentus rūšiuoti į du atskirus konteinerius pagal jų pažangumą. Taip pat išvedimas dabar vykdomas į failus, o ne į konsolę.
+
+### Release v1.0
+
+Galutinė šios programos versija, kuri yra papildyta list ir deque konteineriais, padarytas dar vienas spartos tyrimas. Sukurtos efektyvesnės funkcijos studentų rūšiavimui į dvi grupes
+## Spartos tyrimai
+
 v1.0
 Šio tyrimo tikslas yra ištirti programos spartą naudojant skirtingus konteinerius: vector, list, deque. 
 Atlikti skirtingi veiksmai su konteineriais ir buvo matuojamas atlikimo veikimo laikas, pavaizduotas lentelėse:
@@ -14,7 +53,7 @@ Atlikti skirtingi veiksmai su konteineriais ir buvo matuojamas atlikimo veikimo 
    | 1000000 | 2.023 | 2.013 | 2.009 | 2.012| 2.018|2.015 |
    | 10000000| 20.616 | 20.63| 20.564 | 20.446| 20.402| 20.5316|
 
-   **1.2. Rezultatai skaitymo į Deque konteinerį:**
+   1.2. Rezultatai skaitymo į Deque konteinerį:
 
    | Įrašų skaičius faile | Pirmas bandymas | Antras bandymas | Trečias bandymas | Ketvirtas bandymas | Penktas bandymas | Vidurkis |
    |---------|------|-----------------|-----------------|-----------------|-----------------|----------|
@@ -23,6 +62,7 @@ Atlikti skirtingi veiksmai su konteineriais ir buvo matuojamas atlikimo veikimo 
    | 100000 | 0.214| 0.216 |  0.223| 0.219| 0.224 |      0.2184    |
    | 1000000 | 2.239 | 2.173 | 2.17 | 2.168| 2.173|       2.1846   |
    | 10000000 | 27.198 | 25.904| 25.995 | 26.309| 26.451|   26.3714       |
+
    1.3 Rezultatai skaitymo į Vector konteinerį:
 
 | Įrašų skaičius faile | Pirmas bandymas | Antras bandymas | Trečias bandymas | Ketvirtas bandymas | Penktas bandymas | Vidurkis|
@@ -32,6 +72,9 @@ Atlikti skirtingi veiksmai su konteineriais ir buvo matuojamas atlikimo veikimo 
 | 100000 | 0.379 |  0.377 |  0.378| 0.627| 0.839| 0.52|
 | 1000000 | 3.818 | 3.7 | 3.797| 7.434| 6.293| 5.0084|
 | 10000000 | 40.703 | 40.693 | 40.651| 68.402| 66.579| 51.4056|
+
+
+Suskaičiuoti vidurkiai rodo, kad skaitymas į List konteinerį vyksta greičiausiai.
 
 2. Studentų rūšiavimas didėjimo tvarka (pagal galutinį pažymį iš vidurkio)
    
@@ -44,6 +87,8 @@ Atlikti skirtingi veiksmai su konteineriais ir buvo matuojamas atlikimo veikimo 
 | 100000 | 0.0101778 | 0.0134357 |  0.0186094| 0.0109893|0.0101133| 0.0126651|
 | 1000000 | 0.413999 | 0.396489| 0.437618| 0.505107| 0.436495| 0.4379416|
 | 10000000 | 8.34264 | 8.01193| 8.17679| 8.01488| 8.13933| 8.137114|
+
+
 2.2. Rūšiavimas su Deque:
 
 | Įrašų skaičius faile | Pirmas bandymas | Antras bandymas | Trečias bandymas | Ketvirtas bandymas | Penktas bandymas | Vidurkis|
@@ -63,6 +108,8 @@ Atlikti skirtingi veiksmai su konteineriais ir buvo matuojamas atlikimo veikimo 
 | 100000 | 0.135 | 0.144 |  0.142| 0.148| 0.141| 0.142|
 | 1000000 | 1.511 |1.436| 1.393| 1.475| 1.452| 1.4534|
 | 10000000 | 18.33 | 17.973| 17.974| 17.814| 17.834| 17.985|
+
+Suskaičiuoti vidurkiai rodo, kad rūšiavimas didėjimo tvarka vyksta sparčiausiai su deque konteineriu
 
 3. Įrašų dalijimas į du konteinerius
 
@@ -95,6 +142,8 @@ Atlikti skirtingi veiksmai su konteineriais ir buvo matuojamas atlikimo veikimo 
 | 100000               | 0.062           | 0.063           | 0.063            | 0.103              | 0.101            | 0.0784   |
 | 1000000              | 0.694           | 0.699           | 0.695            | 1.135              | 1.12             | 0.8686   |
 | 10000000             | 6.554           | 6.594           | 6.566            | 10.4               | 10.341           | 8.091    |
+
+Šis tyrimas parodė, kad naudojant deque konteinerius, skirstymas veikia greičiausiai.
 
 Algoritmas, naudojamas praeitame tyrime, gali būti optimizuotas. Galime tuo įsitikinti naudodami 3 strategijas:
 
@@ -136,6 +185,7 @@ Deque:
 | 1000000        | 0.34394575   |
 | 10000000       | 0.543685     |
 
+Antra strategija parodė didesnį efektyvumą, nei pirma strategija, tiek laiko, tiek užimamos atminties atžvilgiu.
 
 3 strategija - bus optimizuota antra strategija efektyvesnius algoritmus.
 
@@ -169,7 +219,7 @@ Deque:
 | 1000000        | 0.003637294 |
 | 10000000       | 0.9234382   |
 
-
+Optimizuota antra strategija naudojant efektyvesnius algoritmus (t.y. trečia strategija) yra efektyviausia iš trijų laiko atžvilgiu.
 
 v0.4
 Atlikti du tyrimai programos veikimo greičio analizei.
